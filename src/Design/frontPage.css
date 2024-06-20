@@ -24,64 +24,9 @@
     margin-top: 13px;
     margin-left: 210px;
    
+   
     }
 
-    
-    .col-3 {
-    width: 33%;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 90px;
-    }
-    
-    .col-3 h4 {
-    color: rgb(100, 100, 100);
-    }
-   
-    .col-3 .card {
-    margin-bottom: 20px;
-    position: relative;
-    width: 100%;
-    /* min-height: 400px; */
-    display: inline-block;
-    }
-    
-    .col-3 .card .top {
-    padding: 10px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    
-    .col-3 .card .top a {
-    color: #1d92ff;
-    }
-    
-    .col-3 .card .bottom {
-    padding: 10px 20px;
-    }
-    
-    .col-3 .card .top .userDetails {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    }
-    
-    .col-3 .card .top .userDetails h3 {
-    font-size: 16px;
-    color: #4d4d4f;
-    font-weight: 500;
-    line-height: 1em;
-    }
-    
-    .col-3 .card .top .userDetails h3 span {
-    font-size: 0.75em;
-    }
-    
-    .col-3 .card .top .userDetails h3 span {
-    font-size: 0.75em;
-    }
-    
     .col-9 .card {
     margin-bottom: 20px;
     position: relative;
@@ -89,7 +34,8 @@
     /* min-height: 400px; */
     display: inline-block;
     border-radius: 20px;
-    border: 1px solid rgba(7, 7, 7, 0.24);
+    border: 3px solid rgba(7, 7, 7, 0.24);
+    background-color: antiquewhite;
     }
     
     .col-9 .card .top {
@@ -97,10 +43,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
     }
     
     .col-9 .card .bottom {
     padding: 10px 20px;
+    background-color: rgb(245, 246, 209);
+    border-radius: 20px;
     }
     
     .col-9 .card .top .userDetails {
@@ -152,23 +101,28 @@
     left: 30px;
     width: 100%;
     height: 100%;
+    
     object-fit: cover;
+    
     }
     
     .col-9 .card .top .userDetails h3 {
     width: 100%;
     font-size: 17px;
-    color: #4d4d4f;
+    color: #1c1c1f;
     font-weight: 500;
+    
     line-height: 1em;
     }
     
     .col-9 .card .top .userDetails h3 span {
     font-size: 0.75em;
+    
     }
     
     .col-9 .card .top .userDetails h3 span {
     font-size: 0.75em;
+    
     }
     
     .dot {
@@ -178,8 +132,9 @@
     
     .imgBx {
     position: relative;
-    width: 95%;
+    width: 98%;
     min-height: 70px;
+   
 
     margin: 10px 0 15px;
     }
@@ -202,7 +157,7 @@
     font-weight: 500;
     margin-top: 5px;
     font-size: 14px;
-    color: #4d4d4f;
+    color: #343435;
     }
     
    
@@ -236,9 +191,7 @@
       background: #fafafa;
     }
     
-    .col-3 {
-      display: none;
-    }
+  
     }
     
  
