@@ -9,31 +9,49 @@ export default function UserProfile() {
   const [userData, setUserData] = useState([]);
   const [userName, setUserName] = useState("");
   const [following, setFollowing] = useState(0);
-  const [folllower, setFollower] = useState(null);
+  const [folllower, setFollower] = useState(0);
   const [post, setPost] = useState(0);
+  const [profileImage, setProfileImage] = useState("");
 
   useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get("http://localhost:3001/user_datatest2@gmail.com")
-        .then((res) => {
-          setUserData(res.data);
-          setFollowing(userData.data.Following.length);
-          setFollower(userData.data.Followers.length);
-          setPost(userData.data.post_details.length);
-          setUserName(userData.data.User_name);
-        })
-        .catch((err) => console.log(err));
-    }, 100);
+
+      setTimeout(() => {
+
+         axios
+      .get("http://localhost:3001/user_datatest2@gmail.com")
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => console.log(err));
+        
+      }, 1);
   }, []);
-  console.log(post);
+
+  useEffect(()=>{
+
+    setTimeout(()=>{
+        updateData()
+
+    },1000)
+    
+
+  },[userData])
+
+  const updateData = () => {
+    setFollowing(userData.data.Following.length);
+    setFollower(userData.data.Followers.length);
+    setPost(userData.data.post_details.length);
+    setUserName(userData.data.User_name);
+    setProfileImage(userData.data.profile_image)
+  };
+  console.log(userData)
 
   return (
     <>
       <div className="container">
         <div className="profile-header">
           <img
-            src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
+            src={profileImage}
             alt="Profile Picture"
             className="profile-pic"
           />
