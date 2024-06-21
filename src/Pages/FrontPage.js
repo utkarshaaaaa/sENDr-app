@@ -5,6 +5,8 @@ import "../Design/frontPage.css";
 
 export default function FrontPage() {
   const [data, setData] = useState([]);
+  const [likesHandle, setLikesHndle] = useState(true);
+  const [handleLike, setHandleLike] = useState(0);
 
   // useEffect(() => {
   //   axios
@@ -32,13 +34,28 @@ export default function FrontPage() {
   }, []);
   console.log(data);
 
-  const handleLikes=(email,postId)=>{
-    axios.post(`http://localhost:3001/Inclikes${email}`,{
-      postId:postId
-    })
-    .then(res=>console.log(res.data))
-    .catch(err=>console.log(err))
-  }
+  const IncreasehandleLikes = (email, postId, currentLikeCount) => {
+    axios
+      .post(`http://localhost:3001/Inclikes${email}`, {
+        postId: postId,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    console.log(postId, "from increase");
+
+    setLikesHndle(true);
+  };
+  const DecreasehandleLikes = (email, postId, currentLikeCount) => {
+    axios
+      .post(`http://localhost:3001/Declikes${email}`, {
+        postId: postId,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    console.log(postId, "from decrease");
+
+    setLikesHndle(!likesHandle);
+  };
 
   return (
     <>
@@ -50,45 +67,43 @@ export default function FrontPage() {
                 <div>
                   {" "}
                   <div>
-                    <div>
-                      <div class="containerF">
-                        <div class="col-9">
-                          <div class="card">
-                            <div class="top">
-                              <div class="userDetails">
-                                <div class="profilepic">
-                                  <div class="profile_img">
-                                    <div class="image">
+                    <div id={index}>
+                      <div className="containerF">
+                        <div className="col-9">
+                          <div className="card">
+                            <div className="top">
+                              <div className="userDetails">
+                                <div className="profilepic">
+                                  <div className="profile_img">
+                                    <div className="image">
                                       <img
                                         src={postData.profile_image}
-                                        alt="img8"
+                                        alt="profile Image"
                                       />
                                     </div>
                                   </div>
                                 </div>
                                 <h3>
-                                 {postData.User_name}
+                                  {postData.User_name}
                                   <br />
                                   <span>Location</span>
                                 </h3>
                               </div>
                               <div>
-                                <span class="dot">
-                                  <i class="fas fa-ellipsis-h"></i>
+                                <span className="dot">
+                                  <i className="fas fa-ellipsis-h"></i>
                                 </span>
                               </div>
                             </div>
-                            <div class="imgBx">
+                            <div className="imgBx">
                               <div className="cover">
-                                <p>
-                                  {type.postDec}
-                                </p>
+                                <p>{type.postDec}</p>
                               </div>
                             </div>
-                            <div class="bottom">
-                              <div class="actionBtns">
-                                <div class="left">
-                                  <span class="heart" onclick="addlike()">
+                            <div className="bottom">
+                              <div className="actionBtns">
+                                <div className="left">
+                                  <span className="heart" onclick="addlike()">
                                     <span>
                                       <svg
                                         aria-label="Like"
@@ -98,7 +113,20 @@ export default function FrontPage() {
                                         role="img"
                                         viewBox="0 0 48 48"
                                         width="24"
-                                        onClick={()=>{handleLikes(postData.email,type.postId)}}>
+                                        onClick={() => {
+                                          likesHandle
+                                            ? DecreasehandleLikes(
+                                                postData.email,
+                                                type.postId,
+                                                type.likes
+                                              )
+                                            : IncreasehandleLikes(
+                                                postData.email,
+                                                type.postId,
+                                                type.likes
+                                              );
+                                        }}
+                                      >
                                         <path
                                           d="M34.6 6.1c5.7 0 10.4 5.2 10.4 
                                         11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 
@@ -112,14 +140,23 @@ export default function FrontPage() {
                                         1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 
                                         7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 
                                         48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-                                        onClick={()=>{handleLikes(postData.email,type.postId)}}></path>
+                                          // onClick={() => {
+                                          //   likesHandle?DecreasehandleLikes(
+                                          //     postData.email,
+                                          //     type.postId,type.likes
+                                          //   ):IncreasehandleLikes(
+                                          //     postData.email,
+                                          //     type.postId,type.likes
+                                          //   );
+                                          // }}
+                                        ></path>
                                       </svg>
                                     </span>
                                   </span>
 
                                   <svg
                                     aria-label="Share Post"
-                                    class="_8-yf5 "
+                                    className="_8-yf5 "
                                     color="#262626"
                                     fill="#262626"
                                     height="24"
@@ -137,17 +174,17 @@ export default function FrontPage() {
                                     ></path>
                                   </svg>
                                 </div>
-                                <div class="right">
+                                <div className="right">
                                   <svg
                                     aria-label="Save"
-                                    class="_8-yf5 "
+                                    className="_8-yf5 "
                                     color="#262626"
                                     fill="#262626"
                                     height="24"
                                     role="img"
                                     viewBox="0 0 48 48"
                                     width="24"
-                                   >
+                                  >
                                     <path
                                       d="M43.5 48c-.4 0-.8-.2-1.1-.4L24 29 5.6 
                                     47.6c-.4.4-1.1.6-1.6.3-.6-.2-1-.8-1-1.4v-45C3 .7 
@@ -155,19 +192,25 @@ export default function FrontPage() {
                                     1.2-.9 1.4-.2.1-.4.1-.6.1zM24 26c.8 
                                     0 1.6.3 2.2.9l15.8 16V3H6v39.9l15.8-16c.6-.6 
                                     1.4-.9 2.2-.9z"
-                                   ></path>
+                                    ></path>
                                   </svg>
                                 </div>
                               </div>
                               <a href="#">
-                                <p class="likes">{type.likes } likes</p>
+                                {likesHandle ? (
+                                  <p className="likes"> {type.likes} likes</p>
+                                ) : (
+                                  <p className="likes"> {type.likes} likes</p>
+                                )}
                               </a>
 
                               <a href="#">
-                                <h4 class="comments">View all {type.comment} comments</h4>
+                                <h4 className="comments">
+                                  View all {type.comment} comments
+                                </h4>
                               </a>
                               <a href="#">
-                                <h5 class="postTime">{type.postId}</h5>
+                                <h5 className="postTime">{type.postId}</h5>
                               </a>
                             </div>
                           </div>
@@ -175,15 +218,12 @@ export default function FrontPage() {
                       </div>
                     </div>
                   </div>{" "}
-                 
                 </div>
               );
             })}
-            
           </div>
-        )
+        );
       })}{" "}
-      
     </>
   );
 }
