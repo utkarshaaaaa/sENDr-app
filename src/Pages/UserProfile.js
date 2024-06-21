@@ -3,34 +3,33 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
 import "../Design/profile.css";
+import Followers from "./Followers";
 
 export default function UserProfile() {
-    
-    const[userData,setUserData]=useState([])
-    const[following,setFollowing]=useState(0)
-    const[folllower,setFollower]=useState(null)
-    const[post,setPost]=useState(0)
+  const [userData, setUserData] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [following, setFollowing] = useState(0);
+  const [folllower, setFollower] = useState(null);
+  const [post, setPost] = useState(0);
 
-    useEffect(()=>{
-        axios.get('http://localhost:3001/user_datatest2@gmail.com')
-        .then(res=>setUserData(...res.data))
-        .catch(err=>console.log(err))
+  useEffect(() => {
+    setTimeout(() => {
+      axios
+        .get("http://localhost:3001/user_datatest2@gmail.com")
+        .then((res) => {
+          setUserData(res.data);
+          setFollowing(userData.data.Following.length);
+          setFollower(userData.data.Followers.length);
+          setPost(userData.data.post_details.length);
+          setUserName(userData.data.User_name);
+        })
+        .catch((err) => console.log(err));
+    }, 100);
+  }, []);
+  console.log(post);
 
-        // setFollowing(userData.data.Following.length)
-        // setFollower(userData.data.Follower.length)
-        // setPost(userData.data.Following.length)
-
-     
-
-    },[])
-    
-
-
-
-    
   return (
     <>
-    
       <div className="container">
         <div className="profile-header">
           <img
@@ -38,14 +37,14 @@ export default function UserProfile() {
             alt="Profile Picture"
             className="profile-pic"
           />
-          <h1 className="username">Username</h1>
+          <h1 className="username">{userName}</h1>
           <div className="stats">
             <div className="stat">
-              <span className="number">150</span>
+              <span className="number">{post}</span>
               <span className="label">Posts</span>
             </div>
             <div className="stat">
-              <span className="number">3.5k</span>
+              <span className="number">{folllower}</span>
               <span className="label">Followers</span>
             </div>
             <div className="stat">
@@ -55,8 +54,11 @@ export default function UserProfile() {
           </div>
         </div>
         <div className="tab-menu">
-          <button className="tab-link active" onclick="openTab(event, 'followers')">
-           Share Profile
+          <button
+            className="tab-link active"
+            onclick="openTab(event, 'followers')"
+          >
+            Share Profile
           </button>
           <button className="tab-link" onclick="openTab(event, 'following')">
             Reach
@@ -74,13 +76,12 @@ export default function UserProfile() {
             <button className="follow-btn">Follow</button>
           </div>
         </div>
-        <div id="following" className="tab-content" >
+        <div id="following" className="tab-content">
           <div className="user">
             <img src="following1.jpg" alt="Following 1" className="user-pic" />
             <span className="user-name">Following 1</span>
             <button className="unfollow-btn">Unfollow</button>
           </div>
-         
         </div>
       </div>
     </>
