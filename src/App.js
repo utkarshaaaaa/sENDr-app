@@ -1,4 +1,4 @@
-import "./App.css";
+
 import axios from "axios";
 import FrontPage from "./Pages/FrontPage";
 import SideBar from "./Pages/SideBar";
