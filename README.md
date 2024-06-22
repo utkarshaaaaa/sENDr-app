@@ -10,6 +10,8 @@ In the project directory, you can run:
 It is a social media app where you can post your daily thoughts and it gets refreshed every day . Every 24hr the post will get removed .You can follow the person you like to hear everyday . New day new thought.
 ## Still on progress :)
 
+Backend will be availabe in different repo . It will be commited soon 
+
 ### `npm start`
 
 Runs the app in the development mode.\
