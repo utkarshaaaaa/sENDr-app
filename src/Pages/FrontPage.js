@@ -6,7 +6,7 @@ import "../Design/frontPage.css";
 export default function FrontPage() {
   const [data, setData] = useState([]);
   const [likesHandle, setLikesHndle] = useState(true);
-  const [handleLike, setHandleLike] = useState(0);
+  const [handlePostId, sethandlePostId] = useState(0);
 
   // useEffect(() => {
   //   axios
@@ -39,23 +39,46 @@ export default function FrontPage() {
       .post(`http://localhost:3001/Inclikes${email}`, {
         postId: postId,
       })
-      .then((res) => console.log(res.data))
+      .then((res) => {console.log(res.data);sethandlePostId(currentLikeCount.postId);})
       .catch((err) => console.log(err));
-    console.log(postId, "from increase");
 
-    setLikesHndle(true);
+
+
+    console.log(postId, "from increase");
+    console.log(handlePostId)
+
+    
+    setLikesHndle(false);
   };
   const DecreasehandleLikes = (email, postId, currentLikeCount) => {
     axios
       .post(`http://localhost:3001/Declikes${email}`, {
         postId: postId,
       })
-      .then((res) => console.log(res.data))
+      .then((res) => {console.log(res.data) ;sethandlePostId(currentLikeCount.postId)})
       .catch((err) => console.log(err));
     console.log(postId, "from decrease");
 
+  
     setLikesHndle(!likesHandle);
   };
+
+  const test=data.map((e)=>{
+    return e.post_details.map((dat)=>{
+      return dat
+
+    })
+  })
+  const fil=test.map((dat)=>{
+    return dat.filter((fi)=>{
+      return fi.postId ==111
+
+    })
+
+  })
+
+  
+  console.log(test)
 
   return (
     <>
@@ -115,15 +138,15 @@ export default function FrontPage() {
                                         width="24"
                                         onClick={() => {
                                           likesHandle
-                                            ? DecreasehandleLikes(
+                                            ? IncreasehandleLikes(
                                                 postData.email,
                                                 type.postId,
-                                                type.likes
+                                                type
                                               )
-                                            : IncreasehandleLikes(
+                                            : DecreasehandleLikes(
                                                 postData.email,
                                                 type.postId,
-                                                type.likes
+                                                type
                                               );
                                         }}
                                       >
@@ -198,11 +221,12 @@ export default function FrontPage() {
                               </div>
                               <a href="#">
                                 {likesHandle ? (
-                                  <p className="likes"> {type.likes} likes</p>
+                                  <p className="likes" id={type.postId}> {type.likes} likes</p>
                                 ) : (
-                                  <p className="likes"> {type.likes} likes</p>
+                                  <p className="likes"id={type.postId}> {type.likes +1} likes</p>
                                 )}
                               </a>
+                              
 
                               <a href="#">
                                 <h4 className="comments">

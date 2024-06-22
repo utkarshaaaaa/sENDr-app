@@ -12,13 +12,13 @@ import { useEffect, useState, useContext } from "react";
 function App() {
   return (
     <div className="App">
-      {/* <NavBar />
+      <NavBar />
       <FrontPage />
 
-      <SideBar /> */}
+      <SideBar />
 
       {/* <Create_Post/> */}
-      <UserProfile/>
+      {/* <UserProfile/> */}
 
       {/* <br/>
       <Menu/> 
