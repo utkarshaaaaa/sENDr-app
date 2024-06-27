@@ -10,9 +10,9 @@ export default function SideBar() {
 <div class="nav-symbol">☰</div>
     <div class="navbar">
         <a href="#home" class="nav-item">Home</a>
-        <a href="#services" class="nav-item">Services</a>
-        <a href="#about" class="nav-item">About</a>
-        <a href="#contact" class="nav-item">Contact</a>
+        <a href="#services" class="nav-item">Followers</a>
+        <a href="#about" class="nav-item">Posts</a>
+        <a href="#contact" class="nav-item">Saved</a>
     </div>
    
   
