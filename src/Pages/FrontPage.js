@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "../Design/frontPage.css";
 
 export default function FrontPage() {
   const [data, setData] = useState([]);
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
+ 
 
   // useEffect(() => {
   //   axios
@@ -31,54 +32,60 @@ export default function FrontPage() {
       .get("http://localhost:3001/get_posts")
       .then((res) => setData(res.data.post))
       .catch((err) => console.log(err));
+
+
+      
   }, []);
-  console.log(data);
+  console.log(data.email);
 
   const IncreasehandleLikes = (email, postId, currentLikeCount) => {
     axios
       .post(`http://localhost:3001/Inclikes${email}`, {
         postId: postId,
       })
-      .then((res) => {console.log(res.data);sethandlePostId(currentLikeCount.postId);})
+      .then((res) => {
+        console.log(res.data);
+        sethandlePostId(currentLikeCount.postId);
+      })
       .catch((err) => console.log(err));
 
-
-
     console.log(postId, "from increase");
-    console.log(handlePostId)
+    console.log(handlePostId);
 
-    
     setLikesHndle(false);
   };
-  const DecreasehandleLikes = (email, postId, currentLikeCount) => {
+  const DecreasehandleLikes = (email, postId, postData) => {
     axios
       .post(`http://localhost:3001/Declikes${email}`, {
         postId: postId,
       })
-      .then((res) => {console.log(res.data) ;sethandlePostId(currentLikeCount.postId)})
+      .then((res) => {
+        console.log(res.data);
+        sethandlePostId(postData.postId);
+      })
       .catch((err) => console.log(err));
-    console.log(postId, "from decrease");
 
-  
+    console.log(postData.postId, "from decrease");
+
     setLikesHndle(!likesHandle);
   };
 
-  const test=data.map((e)=>{
-    return e.post_details.map((dat)=>{
-      return dat
-
-    })
-  })
-  const fil=test.map((dat)=>{
-    return dat.filter((fi)=>{
-      return fi.postId ==111
-
-    })
-
-  })
+  const getLikes = (userId, postId) => {
+    axios
+      .post(`http://localhost:3001/getLikes${userId}`, {
+        postId: postId,
+      })
+      .then((res) => {
+        console.log(res.data.post,"from get likes");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   
-  console.log(test)
+ 
+  
 
   return (
     <>
@@ -90,7 +97,7 @@ export default function FrontPage() {
                 <div>
                   {" "}
                   <div>
-                    <div id={index}>
+                    <div id={index} fun>
                       <div className="containerF">
                         <div className="col-9">
                           <div className="card">
@@ -147,7 +154,9 @@ export default function FrontPage() {
                                                 postData.email,
                                                 type.postId,
                                                 type
+
                                               );
+                                            
                                         }}
                                       >
                                         <path
@@ -221,12 +230,17 @@ export default function FrontPage() {
                               </div>
                               <a href="#">
                                 {likesHandle ? (
-                                  <p className="likes" id={type.postId}> {type.likes} likes</p>
+                                  <p className="likes" id={type.postId}>
+                                    {" "}
+                                    {type.likes} likes
+                                  </p>
                                 ) : (
-                                  <p className="likes"id={type.postId}> {type.likes +1} likes</p>
+                                  <p className="likes" id={type.postId}>
+                                    {" "}
+                                    {type.likes + 1} likes
+                                  </p>
                                 )}
                               </a>
-                              
 
                               <a href="#">
                                 <h4 className="comments">

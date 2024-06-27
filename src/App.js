@@ -1,21 +1,53 @@
-
-import axios from "axios";
 import FrontPage from "./Pages/FrontPage";
 import SideBar from "./Pages/SideBar";
 import NavBar from "./Pages/NavBar";
+import {
+  BrowserRouter,
+  Router,
+  Routes,
+  Route,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 import Menu from "./Pages/Menu";
 import UserProfile from "./Pages/UserProfile";
 import Create_Post from "./Pages/Create_Post";
 import Followers from "./Pages/Followers";
-import { useEffect, useState, useContext } from "react";
 
 function App() {
+  const route=createBrowserRouter([
+  
+    {
+      path:'/',
+      element: <FrontPage />
+
+    },
+   
+    {
+      path:'/UserProfile',
+      element: <UserProfile/>
+    },{
+      path:'/followers',
+      element: <Followers />
+
+    },
+    {
+      path:'/menu',
+      element: <Menu/>
+
+    }
+   
+  ])
   return (
     <div className="App">
-      <NavBar />
+        <NavBar/>
+        <SideBar/>
+      {/* <NavBar />
       <FrontPage />
+      <SideBar /> */}
 
-      <SideBar />
+      <RouterProvider router={route}/> 
 
       {/* <Create_Post/> */}
       {/* <UserProfile/> */}
@@ -24,6 +56,8 @@ function App() {
       <Menu/> 
       */}
       {/* <Followers /> */}
+    
+     
     </div>
   );
 }
