@@ -244,7 +244,10 @@ export default function FrontPage() {
 
                               <a href="#">
                                 <h4 className="comments">
-                                  View all {type.comment} comments
+                                  View all {type.comment.map((e)=>{
+                                    return e.desc
+
+                                  })} comments
                                 </h4>
                               </a>
                               <a href="#">
