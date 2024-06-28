@@ -1,6 +1,7 @@
 import FrontPage from "./Pages/FrontPage";
 import SideBar from "./Pages/SideBar";
 import NavBar from "./Pages/NavBar";
+import Comments from "./Pages/Comments";
 import {
   BrowserRouter,
   Router,
@@ -35,6 +36,10 @@ function App() {
     {
       path:'/menu',
       element: <Menu/>
+
+    }, {
+      path:'/comments',
+      element: <Comments/>
 
     }
    
