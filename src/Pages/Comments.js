@@ -1,55 +1,55 @@
 import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "../Design/comments.css";
 
 export default function () {
+
+
+
+
+
   return (
     <>
-      <div id="respond">
-        <h3>Leave a Comment</h3>
-
-        <form action="post_comment.php" method="post" id="commentform">
-          <label for="comment_author" class="required">
-            Your name
-          </label>
-          <input
-            type="text"
-            name="comment_author"
-            id="comment_author"
-            value=""
-            tabindex="1"
-            required="required"
-          />
-
-          <label for="email" class="required">
-            Your email;
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value=""
-            tabindex="2"
-            required="required"
-          />
-
-          <label for="comment" class="required">
-            Your message
-          </label>
-          <textarea
-            name="comment"
-            id="comment"
-            rows="10"
-            tabindex="4"
-            required="required"
-          ></textarea>
-
-          <input
-            type="hidden"
-            name="comment_post_ID"
-            value="1"
-            id="comment_post_ID"
-          />
-          <input name="submit" type="submit" value="Submit comment" />
+      <div className="comment-session">
+        <div className="post-comment">
+          <div className="post-list">
+            <div className="flex">
+              <div className="user">
+                <div className="user-image">
+                  <img
+                    src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+                    className="userImg"
+                  ></img>
+                </div>
+                <div className="user-meta">
+                  <div className="name">helloo</div>
+                  <div className="day">10 days</div>
+                </div>
+              </div>
+              <div className="reply">
+                <div className="lick icon">
+                  <i className="fa fa-thumbs-o-up ">like</i>
+                </div>
+                <div className="dislick icon">
+                  <i className="fa fa-thumbs-o-down ">dislike</i>
+                </div>
+                <div className="re-comment">reply</div>
+              </div>
+            </div>
+            <div className="comment">
+              lorem20ocwcejncjenjcnejcnejncekjncek ekjncne ce ce cej cej cek jce
+              cec ec e cekc ekc e c
+            </div>
+          </div>
+        </div>
+        <form className="comment-box">
+          <div className="user">
+            <div className="image"></div>
+            <div className="name">yupppp</div>
+          </div>
+          <textarea name="comment"></textarea>
+          <button className="comment-submit">Comment</button>
         </form>
       </div>
     </>

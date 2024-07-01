@@ -1,21 +1,140 @@
-#respond {
-    margin-top: 40px;
-  }
-  
-  #respond input[type='text'],
-  #respond input[type='email'],
-  #respond textarea {
-    margin-bottom: 10px;
-    display: block;
-    width: 100%;
-  
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -o-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-  
-    line-height: 1.4em;
-  }
+.comment-session {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.post-comment {
+  margin-bottom: 20px;
+}
+
+.post-list {
+  margin-bottom: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.user-image img {
+  width: 100%;
+  height: auto;
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-meta .name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.user-meta .day {
+  font-size: 0.875rem;
+  color: #777;
+}
+
+.reply {
+  display: flex;
+  align-items: center;
+}
+
+.reply .icon {
+  margin-right: 10px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.reply .icon:hover {
+  color: #0056b3;
+}
+
+.reply .re-comment {
+  cursor: pointer;
+  color: #007bff;
+}
+
+.reply .re-comment:hover {
+  color: #0056b3;
+}
+
+.comment {
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.comment-box .user {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.comment-box .image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.comment-box .name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.comment-box textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: none;
+  margin-right: 10px;
+}
+
+.comment-box .comment-submit {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.comment-box .comment-submit:hover {
+  background-color: #0056b3;
+}
