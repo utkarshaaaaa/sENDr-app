@@ -30,7 +30,7 @@ export default function FrontPage() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/get_posts")
-      .then((res) => setData(res.data.post))
+      .then((res) =>( setData(res.data.post),console.log(res.data.post)))
       .catch((err) => console.log(err));
 
 
@@ -244,13 +244,13 @@ export default function FrontPage() {
 
                               <a href="#">
                                 <h4 className="comments">
-                                  View all {type.comment.map((e)=>{
-                                    return e.desc
-
-                                  })} comments
+                                  View all {type.comment.length}  comments
+                                  
+                                  
+                                
                                 </h4>
                               </a>
-                              <a href="#">
+                              <a>
                                 <h5 className="postTime">{type.postId}</h5>
                               </a>
                             </div>

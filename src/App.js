@@ -46,8 +46,8 @@ function App() {
   ])
   return (
     <div className="App">
-        {/* <NavBar/>
-        <SideBar/> */}
+        <NavBar/>
+        <SideBar/>
       {/* <NavBar />
       <FrontPage />
       <SideBar /> */}
