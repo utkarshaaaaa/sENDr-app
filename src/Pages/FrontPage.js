@@ -7,7 +7,6 @@ export default function FrontPage() {
   const [data, setData] = useState([]);
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
- 
 
   // useEffect(() => {
   //   axios
@@ -30,11 +29,8 @@ export default function FrontPage() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/get_posts")
-      .then((res) =>( setData(res.data.post),console.log(res.data.post)))
+      .then((res) => (setData(res.data.post), console.log(res.data.post)))
       .catch((err) => console.log(err));
-
-
-      
   }, []);
   console.log(data.email);
 
@@ -76,16 +72,20 @@ export default function FrontPage() {
         postId: postId,
       })
       .then((res) => {
-        console.log(res.data.post,"from get likes");
+        console.log(res.data.post, "from get likes");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  
- 
-  
+  const commen = (postId, data) => {
+    const da = data.comment.filter((com) => {
+      return com.postId == postId;
+    }).length;
+
+    console.log(da);
+  };
 
   return (
     <>
@@ -133,7 +133,22 @@ export default function FrontPage() {
                             <div className="bottom">
                               <div className="actionBtns">
                                 <div className="left">
-                                  <span className="heart" onclick="addlike()">
+                                  <span
+                                    className="heart"
+                                    onClick={() => {
+                                      likesHandle
+                                        ? IncreasehandleLikes(
+                                            postData.email,
+                                            type.postId,
+                                            type
+                                          )
+                                        : DecreasehandleLikes(
+                                            postData.email,
+                                            type.postId,
+                                            type
+                                          );
+                                    }}
+                                  >
                                     <span>
                                       <svg
                                         aria-label="Like"
@@ -143,21 +158,6 @@ export default function FrontPage() {
                                         role="img"
                                         viewBox="0 0 48 48"
                                         width="24"
-                                        onClick={() => {
-                                          likesHandle
-                                            ? IncreasehandleLikes(
-                                                postData.email,
-                                                type.postId,
-                                                type
-                                              )
-                                            : DecreasehandleLikes(
-                                                postData.email,
-                                                type.postId,
-                                                type
-
-                                              );
-                                            
-                                        }}
                                       >
                                         <path
                                           d="M34.6 6.1c5.7 0 10.4 5.2 10.4 
@@ -228,7 +228,7 @@ export default function FrontPage() {
                                   </svg>
                                 </div>
                               </div>
-                              <a href="#">
+                              <a>
                                 {likesHandle ? (
                                   <p className="likes" id={type.postId}>
                                     {" "}
@@ -242,12 +242,18 @@ export default function FrontPage() {
                                 )}
                               </a>
 
-                              <a href="#">
-                                <h4 className="comments">
-                                  View all {type.comment.length}  comments
-                                  
-                                  
-                                
+                              <a>
+                                <h4
+                                  className="comments"
+                                  onClick={() => commen(type.postId, postData)}
+                                >
+                                  View all{" "}
+                                  {
+                                    postData.comment.filter((com) => {
+                                      return com.postId == type.postId;
+                                    }).length
+                                  }{" "}
+                                  comments
                                 </h4>
                               </a>
                               <a>
