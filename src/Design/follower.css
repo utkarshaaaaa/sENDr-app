@@ -4,13 +4,13 @@ body {
    
 }
 
-.col-3 {
-    width: 900px;
+.col-3-follow {
+    width: 800px;
     margin: 0 auto;
     padding-top: 20px;
 }
 
-.card {
+.cardfollow {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -18,14 +18,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.card h4 {
+.cardfollow h4 {
     font-size: 18px;
     margin-bottom: 20px;
     text-align: center;
     color: #333;
 }
 
-.top {
+.top-follow {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,12 +37,12 @@ body {
     align-items: center;
 }
 
-.profilepic {
+.profilepic-follow {
     margin-right: 20px;
     margin-left: 40px;
 }
 
-.profile_img .image img {
+.profile_img .image-follow .imageF {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -60,7 +60,7 @@ h3 span {
     color: #777;
 }
 
-.follow {
+.follow-Follow {
     text-decoration: none;
     background-color: #007bff;
     color: #fff;
@@ -78,7 +78,7 @@ h3 span {
 .cover {
     object-fit: cover;
 }
-.header-profile{
+.header-profile-follow{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,3 +87,91 @@ h3 span {
     font-weight: bold;
     font-style: unset;
 }
+
+
+
+
+
+
+
+
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    
+}
+
+.col-3-follow {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.cardfollow {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-profile-follow {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.userDetails {
+    display: flex;
+    align-items: center;
+}
+
+.profilepic-follow {
+    margin-right: 10px;
+}
+
+.profile_img-follow .image-follow img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+}
+
+h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+}
+
+h3 span {
+    font-size: 12px;
+    color: #777;
+}
+
+.follow-Follow {
+    text-decoration: none;
+    background-color: #ff4b4b;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.follow-Follow:hover {
+    background-color: #ff1a1a;
+}
+
+.image-follow {
+    object-fit: cover;
+}
+ */

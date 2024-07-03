@@ -1,10 +1,11 @@
 import "../Design/follower.css";
 import React from "react";
 import axios from "axios";
+import "../Design/follower.css";
 import { useEffect, useState } from "react";
 
-export default function Followers() {
-  const [arr, setArr] = useState([34, 23, 534, 12, 90,432,57,321,568,431,5]);
+export default function Following() {
+  const [arr, setArr] = useState([34, 23, 534, 12, 90,22,67,231,654,289]);
 
   const handleRemove = (id) => {
     const data = arr.filter((e, indx) => {
@@ -20,7 +21,7 @@ export default function Followers() {
       <div>
         <div className="col-3-follow">
           <div className="cardfollow">
-            <div className="header-profile-follow">Followers</div>
+            <div className="header-profile-follow">Following</div>
 
             {arr.map((e, id) => {
               return (
@@ -50,7 +51,7 @@ export default function Followers() {
                         handleRemove(id);
                       }}
                     >
-                      Remove
+                      Unfollow
                     </a>
                   </div>
                 </div>

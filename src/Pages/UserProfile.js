@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 import "../Design/profile.css";
@@ -10,7 +11,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/user_datatest2@gmail.com")
+      .get("http://localhost:3001/user_datatest1@gmail.com")
       .then((res) => {
         setUserData([res.data]);
       })
@@ -23,33 +24,37 @@ export default function UserProfile() {
     <>
       {userData.map((details, id) => {
         return (
-          <div className="container">
-            <div className="profile-header">
+          <div className="containerProfile">
+            <div className="profile-header-profile">
               <img
                 src={details.data.profile_image}
                 alt="Profile Picture"
-                className="profile-pic"
+                className="profile-pic-user"
               />
               <h1 className="username">{details.data.User_name}</h1>
-              <div className="stats">
-                <div className="stat">
+              <div className="stats-user">
+                <div className="stat-user">
                   <span className="number">
                     {details.data.post_details.length}
                   </span>
                   <span className="label">Posts</span>
                 </div>
-                <div className="stat">
-                  <span className="number">
-                    {details.data.Followers.length}
-                  </span>
-                  <span className="label">Followers</span>
+                <div className="stat-user">
+                  <Link to="/followers">
+                    <span className="number">
+                      {details.data.Followers.length}
+                    </span>
+                    <span className="label">Followers</span>
+                  </Link>
                 </div>
-                <div className="stat">
-                  <span className="number">
-                    {details.data.Following.length}
-                  </span>
-                  <span className="label">Following</span>
-                </div>
+                <Link to="/following">
+                  <div className="stat-user">
+                    <span className="number">
+                      {details.data.Following.length}
+                    </span>
+                    <span className="label">Following</span>
+                  </div>
+                </Link>
               </div>
             </div>
             <div className="tab-menu">
@@ -59,12 +64,7 @@ export default function UserProfile() {
               >
                 Share Profile
               </button>
-              <button
-                className="tab-link"
-                onclick="openTab(event, 'following')"
-              >
-                Reach
-              </button>
+              <button className="tab-link">Reach</button>
             </div>
             <div id="followers" className="tab-content">
               <div className="user">

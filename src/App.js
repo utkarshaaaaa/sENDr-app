@@ -16,6 +16,7 @@ import Menu from "./Pages/Menu";
 import UserProfile from "./Pages/UserProfile";
 import Create_Post from "./Pages/Create_Post";
 import Followers from "./Pages/Followers";
+import Following from "./Pages/Following";
 
 function App() {
   const route=createBrowserRouter([
@@ -46,6 +47,9 @@ function App() {
     {
       path:'/share',
       element:<ShareTo/>
+    },{
+      path:'/following',
+      element:<Following/>
     }
    
   ])
