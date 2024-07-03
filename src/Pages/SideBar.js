@@ -8,18 +8,15 @@ export default function SideBar() {
     <>
       <div class="nav-symbol">☰</div>
       <div class="navbar">
-        <a href="#home" class="nav-item">
-          Home
-        </a>
-        <a href="#services" class="nav-item">
-          Followers
-        </a>
-        <a href="#about" class="nav-item">
-          Posts
-        </a>
-        <a href="#contact" class="nav-item">
-          Saved
-        </a>
+         
+      <a href='/'class="nav-item">Home</a>
+        
+          <a href='/followers'class="nav-item">Followers</a>
+       
+
+        <a class="nav-item">Posts</a>
+        <a class="nav-item">Saved</a>
+        <a  href='/UserProfile'class="nav-item">Profile</a>
       </div>
     </>
   );

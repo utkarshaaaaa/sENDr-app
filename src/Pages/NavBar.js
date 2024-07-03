@@ -7,7 +7,7 @@ export default function NavBar() {
        <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">NotesApp</span>
+          <span className="logo">sENDr</span>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">

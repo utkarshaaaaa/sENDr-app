@@ -1,4 +1,5 @@
 import "../Design/follower.css";
+import { Link } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
