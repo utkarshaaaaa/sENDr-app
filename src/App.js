@@ -2,6 +2,7 @@ import FrontPage from "./Pages/FrontPage";
 import SideBar from "./Pages/SideBar";
 import NavBar from "./Pages/NavBar";
 import Comments from "./Pages/Comments";
+import ShareTo from "./Pages/ShareTo";
 import {
   BrowserRouter,
   Router,
@@ -41,6 +42,10 @@ function App() {
       path:'/comments',
       element: <Comments/>
 
+    },
+    {
+      path:'/share',
+      element:<ShareTo/>
     }
    
   ])
