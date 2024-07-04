@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../Design/frontPage.css";
+import { Link } from "react-router-dom";
 
 export default function FrontPage() {
   const [data, setData] = useState([]);
@@ -241,21 +242,25 @@ export default function FrontPage() {
                                   </p>
                                 )}
                               </a>
+                              <Link to="/comments">
+                                <a>
+                                  <h4
+                                    className="comments"
+                                    onClick={() =>
+                                      commen(type.postId, postData)
+                                    }
+                                  >
+                                    View all{" "}
+                                    {
+                                      postData.comment.filter((com) => {
+                                        return com.postId == type.postId;
+                                      }).length
+                                    }{" "}
+                                    comments
+                                  </h4>
+                                </a>
+                              </Link>
 
-                              <a>
-                                <h4
-                                  className="comments"
-                                  onClick={() => commen(type.postId, postData)}
-                                >
-                                  View all{" "}
-                                  {
-                                    postData.comment.filter((com) => {
-                                      return com.postId == type.postId;
-                                    }).length
-                                  }{" "}
-                                  comments
-                                </h4>
-                              </a>
                               <a>
                                 <h5 className="postTime">{type.postId}</h5>
                               </a>

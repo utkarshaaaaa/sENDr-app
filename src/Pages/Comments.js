@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../Design/comments.css";
+import { Link } from "react-router-dom";
 
 export default function () {
   const [arr, setArr] = useState([1, 2, 3, 4, 5]);
@@ -55,7 +56,9 @@ export default function () {
           </div>
           <textarea name="comment"></textarea>
           <button className="comment-submit">Comment</button>
+         
         </form>
+      
       </div>
     </>
   );
