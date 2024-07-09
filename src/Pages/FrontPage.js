@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import "../Design/frontPage.css";
 import { Link } from "react-router-dom";
 
+
+
 export default function FrontPage() {
+ 
   const [data, setData] = useState([]);
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
+  const [likeCount, setLikeCount] = useState([]);
 
   // useEffect(() => {
   //   axios
@@ -46,7 +50,7 @@ export default function FrontPage() {
       })
       .catch((err) => console.log(err));
 
-    console.log(postId, "from increase");
+    // console.log(postId, "from increase");
     console.log(handlePostId);
 
     setLikesHndle(false);
@@ -62,11 +66,12 @@ export default function FrontPage() {
       })
       .catch((err) => console.log(err));
 
-    console.log(postData.postId, "from decrease");
+    // console.log(postData.postId, "from decrease");
 
     setLikesHndle(!likesHandle);
   };
 
+  useEffect(() => {}, []);
   const getLikes = (userId, postId) => {
     axios
       .post(`http://localhost:3001/getLikes${userId}`, {
@@ -74,6 +79,18 @@ export default function FrontPage() {
       })
       .then((res) => {
         console.log(res.data.post, "from get likes");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const getAllLikes = (userId) => {
+    axios
+      .post(`http://localhost:3001/getAllLikes${userId}`, {})
+      .then((res) => {
+        console.log(res.data.post, "from get likes");
+        setLikeCount(res.data.post);
+        console.log(likeCount, "countttttttttttttttttt");
       })
       .catch((err) => {
         console.log(err);
@@ -88,6 +105,32 @@ export default function FrontPage() {
     console.log(da);
   };
 
+  const comLikes = (postId, postData) => {
+    const fig = postData.post_details
+      .filter((e, indx) => {
+        return e.postId == postId;
+      })
+      .map((e, id) => {
+        return e;
+      });
+    console.log(fig, "aree te likesss");
+  };
+  // {
+  //   likeCount.map((e,id)=>{
+  //     return <div>{e}</div>
+  //   })
+  // }
+
+  const getPostComments=(userEmail,postId)=>{
+    axios.post(`http://localhost:3001/getComments${userEmail}`,{
+      postId:postId
+
+    })
+    .then((res)=>{console.log(res.data)})
+    .catch((err)=>{console.log(err)})
+  }
+
+
   return (
     <>
       {data.map((postData) => {
@@ -97,6 +140,12 @@ export default function FrontPage() {
               return (
                 <div>
                   {" "}
+                  {likeCount.map((e, id) => {
+                    return <div id={id}>
+
+                      
+                    </div>;
+                  })}
                   <div>
                     <div id={index} fun>
                       <div className="containerF">
@@ -136,6 +185,7 @@ export default function FrontPage() {
                                 <div className="left">
                                   <span
                                     className="heart"
+                                    id={type.postId}
                                     onClick={() => {
                                       likesHandle
                                         ? IncreasehandleLikes(
@@ -148,6 +198,7 @@ export default function FrontPage() {
                                             type.postId,
                                             type
                                           );
+                                      getAllLikes(postData._id);
                                     }}
                                   >
                                     <span>
@@ -159,6 +210,9 @@ export default function FrontPage() {
                                         role="img"
                                         viewBox="0 0 48 48"
                                         width="24"
+                                        onClick={() => {
+                                          comLikes(type.postId, postData);
+                                        }}
                                       >
                                         <path
                                           d="M34.6 6.1c5.7 0 10.4 5.2 10.4 
@@ -260,6 +314,7 @@ export default function FrontPage() {
                                   </h4>
                                 </a>
                               </Link>
+                              <button onClick={()=>{getPostComments(postData.email,type.postId)}}>{type.postId}</button>
 
                               <a>
                                 <h5 className="postTime">{type.postId}</h5>
@@ -276,6 +331,7 @@ export default function FrontPage() {
           </div>
         );
       })}{" "}
+      
     </>
   );
 }
