@@ -6,12 +6,19 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function () {
   const [arr, setArr] = useState([]);
+  const[postComment,setPostComment]=useState('');
+  const[email,setEmail]=useState('')
+  
 
   const location = useLocation();
-  console.log(location.state);
+ 
   useEffect(() => {
+    console.log(location.state);
+    setEmail(location.state.email)
+    const e=location.state.email;
+    
     axios
-      .post(`http://localhost:3001/getComments${location.state.email}`, {
+      .post(`http://localhost:3001/getComments${e}`, {
         postId: location.state.postId,
       })
       .then((res) => {
@@ -22,6 +29,44 @@ export default function () {
         console.log(err);
       });
   }, []);
+
+  useEffect(()=>{
+    const e=location.state.email
+    console.log(e,"hummmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+
+
+
+  },[])
+  function addComment(){
+ 
+      const e=location.state.email
+      if(e=null){
+        console.log("hummmmmmmmmmmmmmm")
+        return
+      }
+      console.log(e)
+
+    
+      // axios
+      // .post(`http://localhost:3001/addComment${e}`, {
+      //   dec:postComment,
+      //   userId:"user_id",
+      //   postId:location.state.postId
+      // })
+      // .then((res) => {
+      //   console.log(res.data.comment);
+      //   setArr(res.data.comment)
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // });
+
+      
+    
+   
+  }
+  
+  
 
   
   
@@ -71,8 +116,8 @@ export default function () {
             <div className="image"></div>
             <div className="name">yupppp</div>
           </div>
-          <textarea name="comment"></textarea>
-          <button className="comment-submit">Comment</button>
+          <textarea name="comment"onChange={(e)=>{setPostComment(e.target.value)}} value={postComment} ></textarea>
+          <button className="comment-submit" >Comment</button>
         </form>
       </div>
     </>
