@@ -2,11 +2,29 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../Design/comments.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function () {
-  const [arr, setArr] = useState([1, 2, 3, 4, 5]);
+  const [arr, setArr] = useState([]);
 
+  const location = useLocation();
+  console.log(location.state);
+  useEffect(() => {
+    axios
+      .post(`http://localhost:3001/getComments${location.state.email}`, {
+        postId: location.state.postId,
+      })
+      .then((res) => {
+        console.log(res.data.comment);
+        setArr(res.data.comment)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  
+  
   return (
     <>
       <div className="comment-session">
@@ -26,7 +44,7 @@ export default function () {
                       ></img>
                     </div>
                     <div className="user-meta">
-                      <div className="name">helloo</div>
+                      <div className="name">{e.userId}</div>
                       <div className="day">10 days</div>
                     </div>
                   </div>
@@ -37,12 +55,11 @@ export default function () {
                     <div className="dislick icon">
                       <i className="fa fa-thumbs-o-down ">&#128078;</i>
                     </div>
-                    <div className="re-comment">reply</div>
+                   
                   </div>
                 </div>
                 <div className="comment">
-                  lorem20ocwcejncjenjcnejcnejncekjncek ekjncne ce ce cej cej cek
-                  jce cec ec e cekc ekc e c lorem20ocwcejncjenjcnejcnejncekjncek 
+                  {e.desc}
                 </div>
               </div>
             </div>
@@ -56,9 +73,7 @@ export default function () {
           </div>
           <textarea name="comment"></textarea>
           <button className="comment-submit">Comment</button>
-         
         </form>
-      
       </div>
     </>
   );

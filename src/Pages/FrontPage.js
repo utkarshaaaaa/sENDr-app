@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../Design/frontPage.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+
 
 
 
@@ -12,6 +13,12 @@ export default function FrontPage() {
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
   const [likeCount, setLikeCount] = useState([]);
+
+  const navigate=useNavigate()
+
+  function navigateToCommentSection(email,postId){
+    navigate('/comments',{state:{email:email,postId:postId}})
+  }
 
   // useEffect(() => {
   //   axios
@@ -120,16 +127,6 @@ export default function FrontPage() {
   //     return <div>{e}</div>
   //   })
   // }
-
-  const getPostComments=(userEmail,postId)=>{
-    axios.post(`http://localhost:3001/getComments${userEmail}`,{
-      postId:postId
-
-    })
-    .then((res)=>{console.log(res.data)})
-    .catch((err)=>{console.log(err)})
-  }
-
 
   return (
     <>
@@ -296,8 +293,8 @@ export default function FrontPage() {
                                   </p>
                                 )}
                               </a>
-                              <Link to="/comments">
-                                <a>
+                              
+                                <a onClick={()=>{navigateToCommentSection(postData.email,type.postId)}}>
                                   <h4
                                     className="comments"
                                     onClick={() =>
@@ -313,8 +310,8 @@ export default function FrontPage() {
                                     comments
                                   </h4>
                                 </a>
-                              </Link>
-                              <button onClick={()=>{getPostComments(postData.email,type.postId)}}>{type.postId}</button>
+                              
+                             
 
                               <a>
                                 <h5 className="postTime">{type.postId}</h5>
