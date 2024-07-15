@@ -1,84 +1,67 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import "../Design/comments.css";
+import { Data } from "../context/Context";
+import { useEffect, useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "../Design/comments.css";
 
 export default function () {
+  const { email, setEmail ,individualPostId,setIndividualPostId} = useContext(Data);
   const [arr, setArr] = useState([]);
-  const[postComment,setPostComment]=useState('');
-  const[email,setEmail]=useState('')
-  
+  const [data, setdata] = useState("");
+  const [postComment, setPostComment] = useState("");
+
+  const[cntxEmail,setCntxEmail]=useState("")
 
   const location = useLocation();
- 
+
   useEffect(() => {
     console.log(location.state);
-    setEmail(location.state.email)
-    const e=location.state.email;
     
+
     axios
-      .post(`http://localhost:3001/getComments${e}`, {
-        postId: location.state.postId,
+      .post(`http://localhost:3001/getComments${email}`, {
+        postId: individualPostId,
       })
       .then((res) => {
         console.log(res.data.comment);
-        setArr(res.data.comment)
+        setArr(res.data.comment);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  useEffect(()=>{
-    const e=location.state.email
-    console.log(e,"hummmmmmmmmmmmmmmmmmmmmmmmmmmmm")
+  
+  console.log(individualPostId,"contexttt");
 
+  const addComment=()=> {
+  
 
-
-  },[])
-  function addComment(){
- 
-      const e=location.state.email
-      if(e=null){
-        console.log("hummmmmmmmmmmmmmm")
-        return
-      }
-      console.log(e)
-
-    
-      // axios
-      // .post(`http://localhost:3001/addComment${e}`, {
-      //   dec:postComment,
-      //   userId:"user_id",
-      //   postId:location.state.postId
-      // })
-      // .then((res) => {
-      //   console.log(res.data.comment);
-      //   setArr(res.data.comment)
-      // })
-      // .catch((err) => {
-      //   console.log(err);
-      // });
-
-      
-    
-   
+    axios
+      .post(`http://localhost:3001/addComment${email}`, {
+        dec: postComment,
+        userId: "user_id",
+        postId: individualPostId,
+      })
+      .then((res) => {
+        console.log(res.data.comment);
+        setArr(res.data.comment);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  
-  
 
-  
-  
   return (
     <>
       <div className="comment-session">
         <div className="title">
           <h2>Comments</h2>
         </div>
-        {arr.map((e) => {
+        {arr.map((e,id) => {
           return (
-            <div className="post-comment">
+            <div className="post-comment" key={id}>
               <div className="post-list">
                 <div className="flex">
                   <div className="user">
@@ -100,12 +83,9 @@ export default function () {
                     <div className="dislick icon">
                       <i className="fa fa-thumbs-o-down ">&#128078;</i>
                     </div>
-                   
                   </div>
                 </div>
-                <div className="comment">
-                  {e.desc}
-                </div>
+                <div className="comment">{e.desc}</div>
               </div>
             </div>
           );
@@ -116,8 +96,14 @@ export default function () {
             <div className="image"></div>
             <div className="name">yupppp</div>
           </div>
-          <textarea name="comment"onChange={(e)=>{setPostComment(e.target.value)}} value={postComment} ></textarea>
-          <button className="comment-submit" >Comment</button>
+          <textarea
+            name="comment"
+            onChange={(e) => {
+              setPostComment(e.target.value);
+            }}
+            value={postComment}
+          ></textarea>
+          <button className="comment-submit" onClick={()=>{addComment()}}>Comment</button>
         </form>
       </div>
     </>

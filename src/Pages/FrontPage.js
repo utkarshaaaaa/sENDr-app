@@ -1,24 +1,28 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Data } from "../context/Context";
+import { useEffect, useState,useContext } from "react";
+import { Link, useLocation,useNavigate } from "react-router-dom";
 import "../Design/frontPage.css";
-import { Link,useNavigate } from "react-router-dom";
-
-
-
 
 export default function FrontPage() {
- 
   const [data, setData] = useState([]);
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
   const [likeCount, setLikeCount] = useState([]);
+  const { email, setEmail,individualPostId,setIndividualPostId } = useContext(Data);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  function navigateToCommentSection(email,postId){
-    navigate('/comments',{state:{email:email,postId:postId}})
+  function navigateToCommentSection(Email, postId) {
+    setEmail(Email)
+    setIndividualPostId(postId)
+
+    navigate("/comments", { state: { Email: Email, postId: postId } });
+
   }
+
+  
 
   // useEffect(() => {
   //   axios
@@ -78,7 +82,6 @@ export default function FrontPage() {
     setLikesHndle(!likesHandle);
   };
 
-  useEffect(() => {}, []);
   const getLikes = (userId, postId) => {
     axios
       .post(`http://localhost:3001/getLikes${userId}`, {
@@ -138,10 +141,7 @@ export default function FrontPage() {
                 <div>
                   {" "}
                   {likeCount.map((e, id) => {
-                    return <div id={id}>
-
-                      
-                    </div>;
+                    return <div id={id}></div>;
                   })}
                   <div>
                     <div id={index} fun>
@@ -293,25 +293,28 @@ export default function FrontPage() {
                                   </p>
                                 )}
                               </a>
-                              
-                                <a onClick={()=>{navigateToCommentSection(postData.email,type.postId)}}>
-                                  <h4
-                                    className="comments"
-                                    onClick={() =>
-                                      commen(type.postId, postData)
-                                    }
-                                  >
-                                    View all{" "}
-                                    {
-                                      postData.comment.filter((com) => {
-                                        return com.postId == type.postId;
-                                      }).length
-                                    }{" "}
-                                    comments
-                                  </h4>
-                                </a>
-                              
-                             
+
+                              <a
+                                onClick={() => {
+                                  navigateToCommentSection(
+                                    postData.email,
+                                    type.postId
+                                  );
+                                }}
+                              >
+                                <h4
+                                  className="comments"
+                                  onClick={() => commen(type.postId, postData)}
+                                >
+                                  View all{" "}
+                                  {
+                                    postData.comment.filter((com) => {
+                                      return com.postId == type.postId;
+                                    }).length
+                                  }{" "}
+                                  comments
+                                </h4>
+                              </a>
 
                               <a>
                                 <h5 className="postTime">{type.postId}</h5>
@@ -328,7 +331,6 @@ export default function FrontPage() {
           </div>
         );
       })}{" "}
-      
     </>
   );
 }

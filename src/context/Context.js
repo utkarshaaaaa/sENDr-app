@@ -1,7 +1,17 @@
-import React from 'react'
 
-export default function Context() {
+import React,{createContext, useState} from 'react'
+export const Data=createContext()
+
+
+export default function Context({children}) {
+
+  const[email,setEmail]=useState("")
+  const[individualPostId,setIndividualPostId]=useState()
+
   return (
-    <div>Context</div>
+    <Data.Provider value={{email,setEmail,individualPostId,setIndividualPostId}}>
+       {children}
+
+    </Data.Provider>
   )
 }
