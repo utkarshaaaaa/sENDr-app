@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
-import { useEffect, useState,useContext } from "react";
-import { Link, useLocation,useNavigate } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../Design/frontPage.css";
 
 export default function FrontPage() {
@@ -10,19 +10,17 @@ export default function FrontPage() {
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
   const [likeCount, setLikeCount] = useState([]);
-  const { email, setEmail,individualPostId,setIndividualPostId } = useContext(Data);
+  const { email, setEmail, individualPostId, setIndividualPostId } =
+    useContext(Data);
 
   const navigate = useNavigate();
 
   function navigateToCommentSection(Email, postId) {
-    setEmail(Email)
-    setIndividualPostId(postId)
+    setEmail(Email);
+    setIndividualPostId(postId);
 
     navigate("/comments", { state: { Email: Email, postId: postId } });
-
   }
-
-  
 
   // useEffect(() => {
   //   axios

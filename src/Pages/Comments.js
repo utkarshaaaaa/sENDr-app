@@ -5,38 +5,42 @@ import { useEffect, useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../Design/comments.css";
 
+
 export default function () {
-  const { email, setEmail ,individualPostId,setIndividualPostId} = useContext(Data);
+  const { email, setEmail, individualPostId, setIndividualPostId } =
+    useContext(Data);
   const [arr, setArr] = useState([]);
   const [data, setdata] = useState("");
   const [postComment, setPostComment] = useState("");
 
-  const[cntxEmail,setCntxEmail]=useState("")
+  const [cntxEmail, setCntxEmail] = useState("");
 
   const location = useLocation();
 
   useEffect(() => {
     console.log(location.state);
+    const getComment = () => {
+      
+      axios
+        .post(`http://localhost:3001/getComments${email}`, {
+          postId: individualPostId,
+        })
+        .then((res) => {
+          console.log(res.data.comment);
+          setArr(res.data.comment);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getComment()
     
-
-    axios
-      .post(`http://localhost:3001/getComments${email}`, {
-        postId: individualPostId,
-      })
-      .then((res) => {
-        console.log(res.data.comment);
-        setArr(res.data.comment);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
-  
-  console.log(individualPostId,"contexttt");
+  console.log(individualPostId, "contexttt");
 
-  const addComment=()=> {
-  
+  const addComment = (event) => {
+    event.preventDefault();
 
     axios
       .post(`http://localhost:3001/addComment${email}`, {
@@ -51,6 +55,10 @@ export default function () {
       .catch((err) => {
         console.log(err);
       });
+  };
+  const handleComment=(e)=>{
+    e.preventDefault()
+    setPostComment(e.target.value);
   }
 
   return (
@@ -59,7 +67,7 @@ export default function () {
         <div className="title">
           <h2>Comments</h2>
         </div>
-        {arr.map((e,id) => {
+        {arr.map((e, id) => {
           return (
             <div className="post-comment" key={id}>
               <div className="post-list">
@@ -91,20 +99,7 @@ export default function () {
           );
         })}
 
-        <form className="comment-box">
-          <div className="user">
-            <div className="image"></div>
-            <div className="name">yupppp</div>
-          </div>
-          <textarea
-            name="comment"
-            onChange={(e) => {
-              setPostComment(e.target.value);
-            }}
-            value={postComment}
-          ></textarea>
-          <button className="comment-submit" onClick={()=>{addComment()}}>Comment</button>
-        </form>
+      
       </div>
     </>
   );
