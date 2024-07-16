@@ -24,12 +24,16 @@ export default function PostComment({ email, postId }) {
       .then((res) => {
         console.log(res.data.comment, "hehehehhhehehehhe");
         setnewarr([...res.data.comment.comment]);
+        //new changesss
+        setArr(res.data.comment)
       })
       .catch((err) => {
         console.log(err);
       });
       
     setTimeout(() => {
+
+      
       const newAr = newarr.filter((e) => e.postId === postId).map((e) => e);
       console.log(newAr, "niceeeeeee");
       setArr(newAr)
