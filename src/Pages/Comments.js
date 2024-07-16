@@ -2,16 +2,17 @@ import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useNavigate } from "react-router-dom";
 import "../Design/comments.css";
+import PostComment from "./PostComment";
 
 
 export default function () {
-  const { email, setEmail, individualPostId, setIndividualPostId } =
+  const { email, setEmail, individualPostId, setIndividualPostId,arr, setArr } =
     useContext(Data);
-  const [arr, setArr] = useState([]);
-  const [data, setdata] = useState("");
-  const [postComment, setPostComment] = useState("");
+    
+  const navigate = useNavigate();
+
 
   const [cntxEmail, setCntxEmail] = useState("");
 
@@ -39,27 +40,7 @@ export default function () {
 
   console.log(individualPostId, "contexttt");
 
-  const addComment = (event) => {
-    event.preventDefault();
 
-    axios
-      .post(`http://localhost:3001/addComment${email}`, {
-        dec: postComment,
-        userId: "user_id",
-        postId: individualPostId,
-      })
-      .then((res) => {
-        console.log(res.data.comment);
-        setArr(res.data.comment);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const handleComment=(e)=>{
-    e.preventDefault()
-    setPostComment(e.target.value);
-  }
 
   return (
     <>
@@ -98,6 +79,13 @@ export default function () {
             </div>
           );
         })}
+          <PostComment email={email} postId={individualPostId}/>
+
+        <button onClick={()=>{
+          navigate('/postComment')
+          
+        }}>PostCommment</button>
+      
 
       
       </div>

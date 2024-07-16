@@ -3,6 +3,7 @@ import SideBar from "./Pages/SideBar";
 import NavBar from "./Pages/NavBar";
 import Comments from "./Pages/Comments";
 import ShareTo from "./Pages/ShareTo";
+import PostComment from "./Pages/PostComment";
 import {
   BrowserRouter,
   Router,
@@ -50,6 +51,9 @@ function App() {
     },{
       path:'/following',
       element:<Following/>
+    },{
+      path:'/postComment',
+      element:<PostComment/>
     }
    
   ])
