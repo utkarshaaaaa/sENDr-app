@@ -5,9 +5,9 @@ import { useEffect, useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../Design/comments.css";
 
-export default function PostComment({ email, postId }) {
+export default function PostComment({ email, postId,userId }) {
   const { arr, setArr } = useContext(Data);
-  console.log(email, postId);
+  console.log(email, postId,userId);
   const [change, setChange] = useState(true);
   const [postComment, setPostComment] = useState("");
   const [newarr, setnewarr] = useState([]);
@@ -18,30 +18,30 @@ export default function PostComment({ email, postId }) {
     axios
       .post(`http://localhost:3001/addComment${email}`, {
         desc: postComment,
-        userId: "user_id",
+        userId: userId,
         postId: postId,
       })
       .then((res) => {
         console.log(res.data.comment, "hehehehhhehehehhe");
-        setnewarr([...res.data.comment.comment]);
-        //new changesss
-        setArr(res.data.comment)
+        setnewarr([ ...res.data.comment.comment]);
       })
       .catch((err) => {
         console.log(err);
       });
-      
-    setTimeout(() => {
-
-      
-      const newAr = newarr.filter((e) => e.postId === postId).map((e) => e);
-      console.log(newAr, "niceeeeeee");
-      setArr(newAr)
-    }, 1000);
 
     setChange(!change);
     setPostComment("");
   };
+
+  useEffect(() => {
+    if (newarr.length > 0) {
+      const newAr = newarr.filter((e) => e.postId === postId).map((e) => e);
+      console.log(newAr, "niceeeeeee");
+      setArr(newAr);
+    } else {
+      console.log("newarr is empty");
+    }
+  }, [newarr, postId, change]);
   const handleComment = (e) => {
     e.preventDefault();
     setPostComment(e.target.value);

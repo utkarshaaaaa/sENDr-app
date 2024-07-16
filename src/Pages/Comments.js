@@ -8,7 +8,7 @@ import PostComment from "./PostComment";
 
 
 export default function () {
-  const { email, setEmail, individualPostId, setIndividualPostId,arr, setArr } =
+  const { email, setEmail, individualPostId, setIndividualPostId,arr, setArr,userId,setUserId } =
     useContext(Data);
     
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ export default function () {
                       ></img>
                     </div>
                     <div className="user-meta">
-                      <div className="name">{e.userId}</div>
+                      <div className="name">{e.userName}</div>
                       <div className="day">10 days</div>
                     </div>
                   </div>
@@ -79,12 +79,9 @@ export default function () {
             </div>
           );
         })}
-          <PostComment email={email} postId={individualPostId}/>
+          <PostComment email={email} postId={individualPostId} userId={userId}/>
 
-        <button onClick={()=>{
-          navigate('/postComment')
-          
-        }}>PostCommment</button>
+       
       
 
       

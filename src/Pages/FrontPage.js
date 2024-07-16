@@ -10,14 +10,15 @@ export default function FrontPage() {
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
   const [likeCount, setLikeCount] = useState([]);
-  const { email, setEmail, individualPostId, setIndividualPostId } =
+  const { email, setEmail, individualPostId, setIndividualPostId ,userId,setUserId} =
     useContext(Data);
 
   const navigate = useNavigate();
 
-  function navigateToCommentSection(Email, postId) {
+  function navigateToCommentSection(Email, postId,userId) {
     setEmail(Email);
     setIndividualPostId(postId);
+    setUserId(userId)
 
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
@@ -296,7 +297,8 @@ export default function FrontPage() {
                                 onClick={() => {
                                   navigateToCommentSection(
                                     postData.email,
-                                    type.postId
+                                    type.postId,
+                                    postData._id
                                   );
                                 }}
                               >
