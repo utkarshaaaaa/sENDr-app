@@ -18,6 +18,7 @@ import UserProfile from "./Pages/UserProfile";
 import Create_Post from "./Pages/Create_Post";
 import Followers from "./Pages/Followers";
 import Following from "./Pages/Following";
+import SignUp from "./Pages/SignUp";
 
 function App() {
   const route=createBrowserRouter([
@@ -54,26 +55,28 @@ function App() {
     },{
       path:'/postComment',
       element:<PostComment/>
+    },{
+      path:'/signup',
+      element:<SignUp/>
     }
    
   ])
+  const a=2
   return (
     <div className="App">
-        <NavBar/>
-        <SideBar/>
-      {/* <NavBar />
-      <FrontPage />
-      <SideBar /> */}
+
+      {
+        a==1?<div></div>:<div>
+           <NavBar/>
+           <SideBar/>
+        </div>
+      }
+       
+    
 
       <RouterProvider router={route}/> 
 
-      {/* <Create_Post/> */}
-      {/* <UserProfile/> */}
-
-      {/* <br/>
-      <Menu/> 
-      */}
-      {/* <Followers /> */}
+    
     
      
     </div>

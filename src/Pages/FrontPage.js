@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
+import SideBar from "./SideBar";
 import { useEffect, useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../Design/frontPage.css";
@@ -132,6 +133,7 @@ export default function FrontPage() {
 
   return (
     <>
+    
       {data.map((postData) => {
         return (
           <div key={postData._id}>
