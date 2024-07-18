@@ -6,17 +6,17 @@ import "../Design/sidebar.css";
 export default function SideBar() {
   return (
     <>
-      <div class="nav-symbol">☰</div>
-      <div class="navbar">
+      <div className="nav-symbol">☰</div>
+      <div className="navbar">
          
-      <a href='/'class="nav-item">Home</a>
+      <a href='/'className="nav-item">Home</a>
         
-          <a href='/followers'class="nav-item">Followers</a>
+          <a href='/followers'className="nav-item">Followers</a>
        
 
-        <a class="nav-item">Posts</a>
-        <a class="nav-item">Saved</a>
-        <a  href='/UserProfile'class="nav-item">Profile</a>
+        <a className="nav-item">Posts</a>
+        <a className="nav-item">Saved</a>
+        <a  href='/UserProfile'className="nav-item">Profile</a>
       </div>
     </>
   );
