@@ -26,6 +26,8 @@ export default function () {
       />
       <button onClick={()=>{getSignUpData()}}>Get the dataa</button>
       {data.email}
+      <br/>
+      {data.name}
 
       <img src={data.picture}/>
       
