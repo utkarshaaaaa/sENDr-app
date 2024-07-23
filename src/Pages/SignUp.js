@@ -29,7 +29,7 @@ export default function () {
       <br/>
       {data.name}
 
-      <img src={data.picture}/>
+      <img src={data.picture} alt="user image"/>
       
     </div>
   );
