@@ -45,7 +45,7 @@ export default function FrontPage() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/get_posts")
-      .then((res) => (setData(res.data.post), console.log(res.data.post)))
+      .then((res) => (setData(res.data.post), console.log(res.data)))
       .catch((err) => console.log(err));
   }, []);
   console.log(data.email);
