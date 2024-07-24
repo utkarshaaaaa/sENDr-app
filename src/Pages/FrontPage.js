@@ -24,6 +24,9 @@ export default function FrontPage() {
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
 
+  function navigateToSharePage(){
+    navigate("/share")
+  }
   // useEffect(() => {
   //   axios
   //     .post("http://localhost:3001/regtest5@gmail.com",{
@@ -248,7 +251,8 @@ export default function FrontPage() {
                                     role="img"
                                     viewBox="0 0 48 48"
                                     width="24"
-                                  >
+                                    onClick={()=>{navigateToSharePage()}}
+                                   >
                                     <path
                                       d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 
                                     3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 
