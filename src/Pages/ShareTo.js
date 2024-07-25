@@ -15,7 +15,8 @@ export default function ShareTo() {
     setArr,
     userId,
     setUserId,
-    sharedPostData,setSharedPostData
+    sharedPostData,
+    setSharedPostData,
   } = useContext(Data);
 
   const [followingData, setFollowingData] = useState({});
@@ -28,17 +29,28 @@ export default function ShareTo() {
       .get(`http://localhost:3001/getFollowingData${email}`)
       .then(
         (res) => (
-          setFollowingData(res.data), console.log(res.data, "dataaaaaaa")
+          setFollowingData(res.data)
         )
       )
       .catch((err) => console.log(err));
   }, []);
 
-  const handleShare=()=>{
+  const handleShare = (recieverEmail) => {
+    axios
+      .post(`http://localhost:3001/share${recieverEmail}`,{
+        shareData:sharedPostData,
+        sendersEmail:email
 
-    
-
-  }
+      })
+      .then((res) => {
+        console.log(res.data.sharedPostData,"shared data");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      
+      setHandleSend(!handleSend)
+  };
 
   return (
     <>
@@ -73,7 +85,7 @@ export default function ShareTo() {
                   </div>
                   <div>
                     {handleSend ? (
-                      <a className="follow-Follow" >Send</a>
+                      <a className="follow-Follow" onClick={()=>{handleShare(e.email)}}>Send</a>
                     ) : (
                       <a className="follow-Follow">Unsend</a>
                     )}
