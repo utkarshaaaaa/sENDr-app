@@ -11,22 +11,33 @@ export default function FrontPage() {
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
   const [likeCount, setLikeCount] = useState([]);
-  const { email, setEmail, individualPostId, setIndividualPostId ,userId,setUserId} =
-    useContext(Data);
+  const {
+    email,
+    setEmail,
+    individualPostId,
+    setIndividualPostId,
+    setUserId,
+    sharedPostData,
+    setSharedPostData,
+  } = useContext(Data);
 
   const navigate = useNavigate();
 
-  function navigateToCommentSection(Email, postId,userId) {
+  function navigateToCommentSection(Email, postId, userId) {
     setEmail(Email);
     setIndividualPostId(postId);
-    setUserId(userId)
+    setUserId(userId);
 
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
 
-  function navigateToSharePage(Email){
+  function navigateToSharePage(Email, shareData) {
     setEmail(Email);
-    navigate("/share")
+
+    setSharedPostData(shareData);
+    console.log(sharedPostData,"shared sdata")
+
+    navigate("/share");
   }
   // useEffect(() => {
   //   axios
@@ -60,13 +71,11 @@ export default function FrontPage() {
         postId: postId,
       })
       .then((res) => {
-        console.log(res.data);
         sethandlePostId(currentLikeCount.postId);
       })
       .catch((err) => console.log(err));
 
     // console.log(postId, "from increase");
-    console.log(handlePostId);
 
     setLikesHndle(false);
   };
@@ -137,7 +146,6 @@ export default function FrontPage() {
 
   return (
     <>
-    
       {data.map((postData) => {
         return (
           <div key={postData._id}>
@@ -145,9 +153,9 @@ export default function FrontPage() {
               return (
                 <div>
                   {" "}
-                  {likeCount.map((e, id) => {
+                  {/* {likeCount.map((e, id) => {
                     return <div id={id}></div>;
-                  })}
+                  })} */}
                   <div>
                     <div id={index} fun>
                       <div className="containerF">
@@ -252,9 +260,10 @@ export default function FrontPage() {
                                     role="img"
                                     viewBox="0 0 48 48"
                                     width="24"
-                                    onClick={()=>{navigateToSharePage(postData.email)}}
-                                   >
-                                    
+                                    onClick={() => {
+                                      navigateToSharePage(postData.email, type);
+                                    }}
+                                  >
                                     <path
                                       d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 
                                     3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 
