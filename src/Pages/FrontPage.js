@@ -19,6 +19,7 @@ export default function FrontPage() {
     setUserId,
     sharedPostData,
     setSharedPostData,
+    logedUserEmail,setLogedUserEmail
   } = useContext(Data);
 
   const navigate = useNavigate();
@@ -32,7 +33,9 @@ export default function FrontPage() {
   }
 
   function navigateToSharePage(Email, shareData) {
-    setEmail(Email);
+    // setEmail(Email);
+    //will change it after after the login part is completed 
+    setLogedUserEmail("test2@gmail.com")
 
     setSharedPostData(shareData);
     console.log(sharedPostData,"shared sdata")

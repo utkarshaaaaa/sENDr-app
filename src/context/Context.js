@@ -10,9 +10,10 @@ export default function Context({children}) {
   const [arr, setArr] = useState([]);
   const[userId,setUserId]=useState("")
   const[sharedPostData,setSharedPostData]=useState("")
+  const[logedUserEmail,setLogedUserEmail]=useState("")
 
   return (
-    <Data.Provider value={{email,setEmail,individualPostId,setIndividualPostId,arr, setArr,userId,setUserId,sharedPostData,setSharedPostData}}>
+    <Data.Provider value={{email,setEmail,individualPostId,setIndividualPostId,arr, setArr,userId,setUserId,sharedPostData,setSharedPostData,logedUserEmail,setLogedUserEmail}}>
        {children}
 
     </Data.Provider>

@@ -17,6 +17,7 @@ export default function ShareTo() {
     setUserId,
     sharedPostData,
     setSharedPostData,
+    logedUserEmail,setLogedUserEmail
   } = useContext(Data);
 
   const [followingData, setFollowingData] = useState({});
@@ -26,7 +27,7 @@ export default function ShareTo() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getFollowingData${email}`)
+      .get(`http://localhost:3001/getFollowingData${logedUserEmail}`)
       .then(
         (res) => (
           setFollowingData(res.data)
@@ -49,7 +50,7 @@ export default function ShareTo() {
         console.log(err);
       });
       
-      setHandleSend(!handleSend)
+      // setHandleSend(!handleSend)
   };
 
   return (

@@ -4,6 +4,7 @@ import NavBar from "./Pages/NavBar";
 import Comments from "./Pages/Comments";
 import ShareTo from "./Pages/ShareTo";
 import PostComment from "./Pages/PostComment";
+import InboxData from "./Pages/InboxData";
 import {
   BrowserRouter,
   Router,
@@ -58,6 +59,9 @@ function App() {
     },{
       path:'/signup',
       element:<SignUp/>
+    },{
+      path:'/inBox',
+      element:<InboxData/>
     }
    
   ])
