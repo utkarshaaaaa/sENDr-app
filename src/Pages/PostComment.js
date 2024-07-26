@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../Design/comments.css";
 
 export default function PostComment({ email, postId,userId }) {
-  const { arr, setArr } = useContext(Data);
+  const { arr, setArr,logedUserEmail, } = useContext(Data);
   console.log(email, postId,userId);
   const [change, setChange] = useState(true);
   const [postComment, setPostComment] = useState("");
@@ -16,13 +16,13 @@ export default function PostComment({ email, postId,userId }) {
     event.preventDefault();
 
     axios
-      .post(`http://localhost:3001/addComment${email}`, {
+      .post(`http://localhost:3001/addComment${logedUserEmail}`, {
         desc: postComment,
         userId: userId,
         postId: postId,
       })
       .then((res) => {
-        console.log(res.data.comment, "hehehehhhehehehhe");
+        
         setnewarr([ ...res.data.comment.comment]);
       })
       .catch((err) => {
@@ -51,12 +51,13 @@ export default function PostComment({ email, postId,userId }) {
     <div>
       <form className="comment-box" onSubmit={addComment}>
         <div className="user">
-          <div className="image"></div>
-          <div className="name">yupppp</div>
+          
+          <div className="name">{}</div>
         </div>
         <textarea
           name="comment"
           value={postComment}
+          placeholder="type comment..."
           onChange={handleComment}
         ></textarea>
         <button

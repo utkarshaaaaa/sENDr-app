@@ -19,29 +19,55 @@ export default function FrontPage() {
     setUserId,
     sharedPostData,
     setSharedPostData,
-    logedUserEmail,setLogedUserEmail
+    logedUserEmail,
+    setLogedUserEmail,
   } = useContext(Data);
 
   const navigate = useNavigate();
 
   function navigateToCommentSection(Email, postId, userId) {
     setEmail(Email);
+    setLogedUserEmail("test1@gmail.com");
     setIndividualPostId(postId);
     setUserId(userId);
 
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
 
-  function navigateToSharePage(Email, shareData) {
-    // setEmail(Email);
-    //will change it after after the login part is completed 
-    setLogedUserEmail("test2@gmail.com")
+  // function navigateToSharePage(Email, shareData) {
+  //   // setEmail(Email);
 
-    setSharedPostData(shareData);
-    console.log(sharedPostData,"shared sdata")
+  //   //will change it after after the login part is completed
+  //   setLogedUserEmail("test1@gmail.com");
+  //   const data = shareData;
 
-    navigate("/share");
-  }
+  //   setSharedPostData(data);
+
+  //   console.log(sharedPostData, "shared sdata");
+
+  //   // navigate("/share");
+  // }
+  // const navigateToSharePage = (Email, shareData) => {
+  //   setLogedUserEmail("test1@gmail.com"); // Set the logged user email
+  //   setSharedPostData(shareData); // Set the shared post data
+
+  //   // This effect will run after sharedPostData is updated
+  //   console.log(sharedPostData, "shared sdata");
+  // };
+  const navigateToSharePage = (Email, shareData) => {
+    setSharedPostData(shareData); 
+    setLogedUserEmail("test1@gmail.com");// Set the shared post data
+    navigate('/share', { state: { sharedPostData } }); // Navigate to /share
+  };
+
+  // useEffect(() => {
+  //   if (sharedPostData) {
+  //     navigate("/share", { state: { sharedPostData } }); // Navigate to /share with state
+  //   }
+  // }, [sharedPostData, navigate]);
+
+
+
   // useEffect(() => {
   //   axios
   //     .post("http://localhost:3001/regtest5@gmail.com",{
@@ -263,8 +289,9 @@ export default function FrontPage() {
                                     role="img"
                                     viewBox="0 0 48 48"
                                     width="24"
-                                    onClick={() => {
+                                    onClick={(e) => {
                                       navigateToSharePage(postData.email, type);
+                                      
                                     }}
                                   >
                                     <path

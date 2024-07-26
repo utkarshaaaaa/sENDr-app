@@ -9,8 +9,8 @@ export default function Context({children}) {
   const[individualPostId,setIndividualPostId]=useState()
   const [arr, setArr] = useState([]);
   const[userId,setUserId]=useState("")
-  const[sharedPostData,setSharedPostData]=useState("")
-  const[logedUserEmail,setLogedUserEmail]=useState("")
+  const[sharedPostData,setSharedPostData]=useState(null)
+  const[logedUserEmail,setLogedUserEmail]=useState(null)
 
   return (
     <Data.Provider value={{email,setEmail,individualPostId,setIndividualPostId,arr, setArr,userId,setUserId,sharedPostData,setSharedPostData,logedUserEmail,setLogedUserEmail}}>

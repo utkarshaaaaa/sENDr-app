@@ -23,7 +23,7 @@ export default function ShareTo() {
   const [followingData, setFollowingData] = useState({});
   const [handleSend, setHandleSend] = useState(true);
 
-  console.log(email);
+   console.log(JSON.stringify(sharedPostData),"from share page")
 
   useEffect(() => {
     axios
@@ -38,13 +38,13 @@ export default function ShareTo() {
 
   const handleShare = (recieverEmail) => {
     axios
-      .post(`http://localhost:3001/share${recieverEmail}`,{
+      .post(`http://localhost:3001/shared${recieverEmail}`,{
         shareData:sharedPostData,
-        sendersEmail:email
+        senderEmail:email
 
       })
       .then((res) => {
-        console.log(res.data.sharedPostData,"shared data");
+        console.log(res.data,"shared data from shared api");
       })
       .catch((err) => {
         console.log(err);
