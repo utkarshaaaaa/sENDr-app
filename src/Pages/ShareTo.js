@@ -40,7 +40,7 @@ export default function ShareTo() {
     axios
       .post(`http://localhost:3001/shared${recieverEmail}`,{
         shareData:sharedPostData,
-        senderEmail:email
+        sendersEmail:email
 
       })
       .then((res) => {

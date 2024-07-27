@@ -34,26 +34,7 @@ export default function FrontPage() {
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
 
-  // function navigateToSharePage(Email, shareData) {
-  //   // setEmail(Email);
 
-  //   //will change it after after the login part is completed
-  //   setLogedUserEmail("test1@gmail.com");
-  //   const data = shareData;
-
-  //   setSharedPostData(data);
-
-  //   console.log(sharedPostData, "shared sdata");
-
-  //   // navigate("/share");
-  // }
-  // const navigateToSharePage = (Email, shareData) => {
-  //   setLogedUserEmail("test1@gmail.com"); // Set the logged user email
-  //   setSharedPostData(shareData); // Set the shared post data
-
-  //   // This effect will run after sharedPostData is updated
-  //   console.log(sharedPostData, "shared sdata");
-  // };
   const navigateToSharePage = (Email, shareData) => {
     setSharedPostData(shareData); 
     setLogedUserEmail("test1@gmail.com");// Set the shared post data
