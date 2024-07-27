@@ -17,7 +17,7 @@ export default function SideBar() {
         <a className="nav-item">Posts</a>
         <a className="nav-item">Saved</a>
         <a  href='/UserProfile'className="nav-item">Profile</a>
-        <a  href='/'className="nav-item">In Box</a>
+        <a  href='/inbox'className="nav-item">In Box</a>
       </div>
     </>
   );

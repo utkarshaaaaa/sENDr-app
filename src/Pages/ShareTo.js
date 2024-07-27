@@ -40,7 +40,7 @@ export default function ShareTo() {
     axios
       .post(`http://localhost:3001/shared${recieverEmail}`,{
         shareData:sharedPostData,
-        sendersEmail:email
+        sendersEmail:logedUserEmail
 
       })
       .then((res) => {
@@ -50,6 +50,7 @@ export default function ShareTo() {
         console.log(err);
       });
       
+      console.log(email,"from emailll")
       // setHandleSend(!handleSend)
   };
 

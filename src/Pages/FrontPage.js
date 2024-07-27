@@ -27,7 +27,7 @@ export default function FrontPage() {
 
   function navigateToCommentSection(Email, postId, userId) {
     setEmail(Email);
-    setLogedUserEmail("test1@gmail.com");
+    setLogedUserEmail("test1@gmail.com");//static data will be dong it dynamically after login signup page
     setIndividualPostId(postId);
     setUserId(userId);
 
