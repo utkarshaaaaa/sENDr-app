@@ -51,7 +51,7 @@ export default function ShareTo() {
         console.log(err);
       });
       
-      console.log(email,"from emailll")
+ 
       // setHandleSend(!handleSend)
   };
 
