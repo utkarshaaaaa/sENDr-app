@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
 import SideBar from "./SideBar";
+import NavBar from "./NavBar";
 import { useEffect, useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../Design/frontPage.css";
@@ -27,18 +28,17 @@ export default function FrontPage() {
 
   function navigateToCommentSection(Email, postId, userId) {
     setEmail(Email);
-    setLogedUserEmail("test1@gmail.com");//static data will be dong it dynamically after login signup page
+    setLogedUserEmail("test1@gmail.com"); //static data will be dong it dynamically after login signup page
     setIndividualPostId(postId);
     setUserId(userId);
 
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
 
-
   const navigateToSharePage = (Email, shareData) => {
-    setSharedPostData(shareData); 
-    setLogedUserEmail("test1@gmail.com");// Set the shared post data
-    navigate('/share', { state: { sharedPostData } }); // Navigate to /share
+    setSharedPostData(shareData);
+    setLogedUserEmail("test1@gmail.com"); // Set the shared post data
+    navigate("/share", { state: { sharedPostData } }); // Navigate to /share
   };
 
   // useEffect(() => {
@@ -46,8 +46,6 @@ export default function FrontPage() {
   //     navigate("/share", { state: { sharedPostData } }); // Navigate to /share with state
   //   }
   // }, [sharedPostData, navigate]);
-
-
 
   // useEffect(() => {
   //   axios
@@ -154,8 +152,15 @@ export default function FrontPage() {
   //   })
   // }
 
+  const handleInbox=()=>{
+    setLogedUserEmail("test1@gmail.com")
+    navigate('/inBox')
+
+  }
   return (
     <>
+    <NavBar handleInbox={handleInbox}/>
+    
       {data.map((postData) => {
         return (
           <div key={postData._id}>
@@ -272,7 +277,6 @@ export default function FrontPage() {
                                     width="24"
                                     onClick={(e) => {
                                       navigateToSharePage(postData.email, type);
-                                      
                                     }}
                                   >
                                     <path
@@ -359,6 +363,7 @@ export default function FrontPage() {
           </div>
         );
       })}{" "}
+
     </>
   );
 }

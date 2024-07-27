@@ -3,6 +3,7 @@ import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
 import "../Design/sharePage.css";
 
 export default function ShareTo() {
@@ -56,10 +57,11 @@ export default function ShareTo() {
 
   return (
     <>
+    <NavBar/>
       <div>
         <div className="col-3-follow">
           <div className="cardfollow">
-            <div className="header-profile-follow">Send Posts</div>
+            <div className="header-profile-follow">Send Post </div>
 
             {(followingData.length = 0 ? <div></div> : <div></div>)}
 

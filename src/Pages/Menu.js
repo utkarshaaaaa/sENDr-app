@@ -21,7 +21,7 @@ export default function Menu() {
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Federico Kereki</span>
+              <span className="widgetLgName">abc</span>
             </td>
             <td className="widgetLgRemove">
               <div className="remove">Remove</div>

@@ -62,16 +62,21 @@ function App() {
     },{
       path:'/inBox',
       element:<InboxData/>
+    },{
+      path:'/navBar',
+      element:<NavBar/>
     }
    
   ])
+  
   const a=0
   return (
     <div className="App">
+      
 
       {
         a==1?<div></div>:<div>
-           <NavBar/>
+         
            <SideBar/>
         </div>
       }
