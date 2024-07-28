@@ -3,6 +3,7 @@ import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState, useContext } from "react";
 import NavBar from "./NavBar";
+import "../Design/inBox.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function InboxData() {
@@ -14,44 +15,70 @@ export default function InboxData() {
     setLogedUserEmail,
   } = useContext(Data);
 
-  const[postData,setPostData]=useState([])
+  const [postData, setPostData] = useState([]);
 
+  useEffect(() => {
+    setLogedUserEmail("test1@gmail.com");
 
-  useEffect(()=>{
-    setLogedUserEmail("test1@gmail.com")
-   
     setTimeout(() => {
-      axios.get(`http://localhost:3001/getSharedData${logedUserEmail}`)
+      axios
+        .get(`http://localhost:3001/getSharedData${logedUserEmail}`)
 
-      .then((res)=>{console.log(res.data.postData);setPostData(...res.data.postData)})
-      .catch((err)=>{console.log(err)})
-      
+        .then((res) => {
+          console.log(res.data.postData);
+          setPostData(...res.data.postData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }, 100);
-   
-    
-
-  },[])
-  console.log(logedUserEmail,"email")
+  }, []);
+  console.log(logedUserEmail, "email");
   return (
     <>
-    <NavBar/>
-    {
-      postData.length==0 ? <div>
-        Empty Inbox
-      </div>:<div>
-        {
-          postData.map((e)=>{
-            return <div>{e.postDec}</div>
-          })
-        }
-      </div>
-
-    }
-  
-      
-    
-    
+      <NavBar />
+      {postData.length == 0 ? (
+        <div>Empty Inbox</div>
+      ) : (
+        <div>
+          {postData.map((e) => {
+            return (
+              <div class="inBox-container">
+                <div class="inbox-item">
+                  <div class="sender-info">
+                    <img
+                      src="https://via.placeholder.com/40"
+                      alt="Sender Avatar"
+                      class="sender-avatar"
+                    />
+                    <span class="sender-name">Jane Smith</span>
+                  </div>
+                  <div class="post-data">
+                    <div class="post-header">
+                      <img
+                        src={e.senderPic }
+                        alt="Post User Avatar"
+                        class="post-avatar"
+                      />
+                      <span class="post-username">John Doe</span>
+                    </div>
+                    <div class="post-content">
+                      <p>
+                        {e.postDec}
+                      </p>
+                      <div class="timestamp">2 hours ago</div>
+                    </div>
+                    <div class="post-actions">
+                      Send By <img src="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg"alt="Post User Avatar"
+                        class="post-avatar"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
-  
-  )
+  );
 }
