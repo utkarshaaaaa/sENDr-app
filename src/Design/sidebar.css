@@ -1,4 +1,4 @@
-/* styles.css */
+
 
 
 
@@ -46,7 +46,7 @@
 
 .nav-symbol:hover + .navbar,
 .navbar:hover {
-  width: 200px;
+  width: 230px;
 }
 
 
