@@ -1,4 +1,37 @@
+.container-sidebar {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 30px;
+  cursor: pointer;
+  position:fixed;
+  top: 80px;
+  left: 1px;
+  z-index: 10;
 
+  color: rgb(14, 1, 1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
 
 
 
@@ -10,7 +43,6 @@
   top: 80px;
   left: 1px;
   z-index: 10;
-  
   background-color: #e1aeae;
   color: rgb(14, 1, 1);
   padding: 10px;
@@ -44,14 +76,14 @@
   padding-left: 30px;
 }
 
-.nav-symbol:hover + .navbar,
+.container-sidebar:hover + .navbar,
 .navbar:hover {
   width: 230px;
 }
 
 
 
-.nav-symbol:hover + .navbar + .content,
+.container-sidebar:hover + .navbar + .content,
 .navbar:hover + .content {
   margin-left: 230px;
 }
