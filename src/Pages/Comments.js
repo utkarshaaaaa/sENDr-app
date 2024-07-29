@@ -2,18 +2,24 @@ import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState, useContext } from "react";
-import { Link, useLocation,useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../Design/comments.css";
 import PostComment from "./PostComment";
 
-
 export default function () {
-  const { email, setEmail, individualPostId, setIndividualPostId,arr, setArr,userId,logedUserEmail,
-    setLogedUserEmail, } =
-    useContext(Data);
-    
-  const navigate = useNavigate();
+  const {
+    email,
+    setEmail,
+    individualPostId,
+    setIndividualPostId,
+    arr,
+    setArr,
+    userId,
+    logedUserEmail,
+    setLogedUserEmail,
+  } = useContext(Data);
 
+  const navigate = useNavigate();
 
   const [cntxEmail, setCntxEmail] = useState("");
 
@@ -22,7 +28,6 @@ export default function () {
   useEffect(() => {
     console.log(location.state);
     const getComment = () => {
-      
       axios
         .post(`http://localhost:3001/getComments${email}`, {
           postId: individualPostId,
@@ -36,14 +41,8 @@ export default function () {
         });
     };
 
-    getComment()
-    
-    
+    getComment();
   }, []);
-
- 
-
-
 
   return (
     <>
@@ -51,6 +50,7 @@ export default function () {
         <div className="title">
           <h2>Comments</h2>
         </div>
+
         {arr?.map((e, id) => {
           return (
             <div className="post-comment" key={id}>
@@ -58,10 +58,7 @@ export default function () {
                 <div className="flex">
                   <div className="user">
                     <div className="user-image">
-                      <img
-                        src={e.userPic}
-                        className="userImg"
-                      ></img>
+                      <img src={e.userPic} className="userImg"></img>
                     </div>
                     <div className="user-meta">
                       <div className="name">{e.userName}</div>
@@ -69,12 +66,6 @@ export default function () {
                     </div>
                   </div>
                   <div className="reply">
-                    <div className="lick icon">
-                      <i className="fa fa-thumbs-o-up ">&#128077;</i>
-                    </div>
-                    <div className="dislick icon">
-                      <i className="fa fa-thumbs-o-down ">&#128078;</i>
-                    </div>
                   </div>
                 </div>
                 <div className="comment">{e.desc}</div>
@@ -82,12 +73,7 @@ export default function () {
             </div>
           );
         })}
-          <PostComment email={email} postId={individualPostId} userId={userId}/>
-
-       
-      
-
-      
+        <PostComment email={email} postId={individualPostId} userId={userId} />
       </div>
     </>
   );
