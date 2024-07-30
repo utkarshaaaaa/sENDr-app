@@ -70,7 +70,19 @@ h3 span {
     transition: background-color 0.3s;
     cursor: pointer;
 }
+.follow-Follow-Sent{
+    text-decoration: none;
+    background-color: #32b31b;
+    color: #fff;
+    padding: 8px 40px;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    
+    
 
+}
 .follow:hover {
     background-color: #0056b3;
 }
