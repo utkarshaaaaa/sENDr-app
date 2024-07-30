@@ -43,34 +43,34 @@ export default function InboxData() {
         <div>
           {postData.map((e) => {
             return (
-              <div class="inBox-container">
-                <div class="inbox-item">
-                  <div class="sender-info">
+              <div className="inBox-container">
+                <div className="inbox-item">
+                  <div className="sender-info">
                     <img
                       src="https://via.placeholder.com/40"
                       alt="Sender Avatar"
-                      class="sender-avatar"
+                      className="sender-avatar"
                     />
-                    <span class="sender-name">Jane Smith</span>
+                    <span className="sender-name">Jane Smith</span>
                   </div>
-                  <div class="post-data">
-                    <div class="post-header">
+                  <div className="post-data">
+                    <div className="post-header">
                       <img
                         src={e.senderPic }
                         alt="Post User Avatar"
-                        class="post-avatar"
+                        className="post-avatar"
                       />
-                      <span class="post-username">John Doe</span>
+                      <span className="post-username">John Doe</span>
                     </div>
-                    <div class="post-content">
+                    <div className="post-content">
                       <p>
                         {e.postDec}
                       </p>
-                      <div class="timestamp">2 hours ago</div>
+                      <div className="timestamp">2 hours ago</div>
                     </div>
-                    <div class="post-actions">
+                    <div className="post-actions">
                       Send By <img src="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg"alt="Post User Avatar"
-                        class="post-avatar"/>
+                        className="post-avatar"/>
                     </div>
                   </div>
                 </div>
