@@ -12,6 +12,7 @@ export default function FrontPage() {
   const [likesHandle, setLikesHndle] = useState(true);
   const [handlePostId, sethandlePostId] = useState(0);
   const [likeCount, setLikeCount] = useState([]);
+  const [LikeStatus, setLikeStatus] = useState({});
   const {
     email,
     setEmail,
@@ -80,6 +81,10 @@ export default function FrontPage() {
       })
       .then((res) => {
         sethandlePostId(currentLikeCount.postId);
+        setLikeStatus((prevState) => ({
+          ...prevState,
+          [postId]: true,
+        }))
       })
       .catch((err) => console.log(err));
 
@@ -95,6 +100,10 @@ export default function FrontPage() {
       .then((res) => {
         console.log(res.data);
         sethandlePostId(postData.postId);
+        setLikeStatus((prevState) => ({
+          ...prevState,
+          [postId]: false,
+        }))
       })
       .catch((err) => console.log(err));
 
@@ -121,7 +130,7 @@ export default function FrontPage() {
       .then((res) => {
         console.log(res.data.post, "from get likes");
         setLikeCount(res.data.post);
-        console.log(likeCount, "countttttttttttttttttt");
+      
       })
       .catch((err) => {
         console.log(err);
@@ -230,7 +239,12 @@ export default function FrontPage() {
                                       <svg
                                         aria-label="Like"
                                         color="#262626"
-                                        fill="#262626"
+                                        fill={  
+                                          LikeStatus[type.postId]
+                                            ? "#ed0c0c"
+                                            : "#262626"
+                                        }
+                                        
                                         height="24"
                                         role="img"
                                         viewBox="0 0 48 48"
@@ -252,15 +266,7 @@ export default function FrontPage() {
                                         1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 
                                         7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 
                                         48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-                                          // onClick={() => {
-                                          //   likesHandle?DecreasehandleLikes(
-                                          //     postData.email,
-                                          //     type.postId,type.likes
-                                          //   ):IncreasehandleLikes(
-                                          //     postData.email,
-                                          //     type.postId,type.likes
-                                          //   );
-                                          // }}
+                                      
                                         ></path>
                                       </svg>
                                     </span>
@@ -312,15 +318,15 @@ export default function FrontPage() {
                                 </div>
                               </div>
                               <a>
-                                {likesHandle ? (
+                                {LikeStatus[type.postId] ? (
                                   <p className="likes" id={type.postId}>
                                     {" "}
-                                    {type.likes} likes
+                                    {type.likes + 1} likes
                                   </p>
                                 ) : (
                                   <p className="likes" id={type.postId}>
                                     {" "}
-                                    {type.likes + 1} likes
+                                    {type.likes } likes
                                   </p>
                                 )}
                               </a>

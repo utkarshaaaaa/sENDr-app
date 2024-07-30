@@ -44,9 +44,9 @@ export default function SideBar() {
         <a className="nav-item" href="/">
           Posts
         </a>
-        <a className="nav-item" href="/">
+        {/* <a className="nav-item" href="/">
           Saved
-        </a>
+        </a> */}
         <a href="/UserProfile" className="nav-item">
           Profile
         </a>
