@@ -88,7 +88,7 @@ export default function FrontPage() {
       })
       .catch((err) => console.log(err));
 
-    // console.log(postId, "from increase");
+
 
     setLikesHndle(false);
   };
@@ -98,7 +98,6 @@ export default function FrontPage() {
         postId: postId,
       })
       .then((res) => {
-        console.log(res.data);
         sethandlePostId(postData.postId);
         setLikeStatus((prevState) => ({
           ...prevState,
@@ -106,8 +105,6 @@ export default function FrontPage() {
         }))
       })
       .catch((err) => console.log(err));
-
-    // console.log(postData.postId, "from decrease");
 
     setLikesHndle(!likesHandle);
   };
@@ -131,11 +128,6 @@ export default function FrontPage() {
       });
     console.log(fig, "aree te likesss");
   };
-  // {
-  //   likeCount.map((e,id)=>{
-  //     return <div>{e}</div>
-  //   })
-  // }
 
   const handleInbox=()=>{
     setLogedUserEmail("test1@gmail.com")
