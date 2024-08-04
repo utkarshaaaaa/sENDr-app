@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
     height: 350px;
     margin: 0;
 }
@@ -12,7 +11,7 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 18px;
+    padding: 40px;
     width: 700px;
   
 }
@@ -83,7 +82,7 @@
     font-size: 24px;
     color: #ffffff;
     background-color: #4A90E2;
-    padding: 10px 10px;
+    padding: 8px 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -91,8 +90,6 @@
     width: 500px;
     transition: background-color 0.3s, transform 0.3s;
 }
-
-
 
 
 .post-container {
@@ -105,7 +102,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin: 20px auto; /* Center the container horizontally */
+    margin: 20px auto; 
 }
 
 .sender-info, .user-info {

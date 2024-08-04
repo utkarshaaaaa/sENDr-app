@@ -8,9 +8,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function InboxData() {
   const {
-    setUserId,
-    sharedPostData,
-    setSharedPostData,
     logedUserEmail,
     setLogedUserEmail,
   } = useContext(Data);
@@ -65,7 +62,7 @@ export default function InboxData() {
                         alt="Post User Avatar"
                         className="post-avatar"
                       />
-                      <span className="post-username">John Doe</span>
+                      <span className="post-username">XYZ</span>
                     </div>
                     <div className="post-content">
                       <p>{e.postDec}</p>
