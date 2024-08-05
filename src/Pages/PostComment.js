@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+
 import "../Design/comments.css";
+import { IoSendSharp } from "react-icons/io5";
 
 export default function PostComment({ email, postId,userId }) {
   const { arr, setArr,logedUserEmail, } = useContext(Data);
@@ -67,7 +68,7 @@ export default function PostComment({ email, postId,userId }) {
             addComment(e);
           }}
         >
-          Comment
+           <IoSendSharp className="send-icon"/>
         </button>
       </form>
     </div>

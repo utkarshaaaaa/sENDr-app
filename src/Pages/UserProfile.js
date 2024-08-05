@@ -65,37 +65,7 @@ export default function UserProfile() {
               </button>
               <button className="tab-link">Reach</button>
             </div>
-            <div id="followers" className="tab-content">
-              <div className="user">
-                <img
-                  src="follower1.jpg"
-                  alt="Follower 1"
-                  className="user-pic"
-                />
-                <span className="user-name">Follower 1</span>
-                <button className="follow-btn">Follow</button>
-              </div>
-              <div className="user">
-                <img
-                  src="follower2.jpg"
-                  alt="Follower 2"
-                  className="user-pic"
-                />
-                <span className="user-name">Follower 2</span>
-                <button className="follow-btn">Follow</button>
-              </div>
-            </div>
-            <div id="following" className="tab-content">
-              <div className="user">
-                <img
-                  src="following1.jpg"
-                  alt="Following 1"
-                  className="user-pic"
-                />
-                <span className="user-name">Following 1</span>
-                <button className="unfollow-btn">Unfollow</button>
-              </div>
-            </div>
+            
           </div>
         );
       })}

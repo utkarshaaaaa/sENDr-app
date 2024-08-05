@@ -7,10 +7,7 @@ import "../Design/inBox.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function InboxData() {
-  const {
-    logedUserEmail,
-    setLogedUserEmail,
-  } = useContext(Data);
+  const { logedUserEmail, setLogedUserEmail } = useContext(Data);
 
   const [postData, setPostData] = useState([]);
 
@@ -36,11 +33,14 @@ export default function InboxData() {
   return (
     <>
       <NavBar />
+      <div class="inbox-container">Inbox Messages</div>
       {postData.length == 0 ? (
-        <div>Empty Inbox</div>
+        <div class="empty-inbox">
+          <h2>Empty Inbox</h2>
+          <p>You have no messages at the moment. Check back later!</p>
+        </div>
       ) : (
         <div>
-          <div class="inbox-container">Inbox Messages</div>
           {postData.map((e) => {
             return (
               <div className="inBox-container">
@@ -66,7 +66,6 @@ export default function InboxData() {
                     </div>
                     <div className="post-content">
                       <p>{e.postDec}</p>
-                      
                     </div>
                     <div className="post-actions"></div>
                   </div>

@@ -88,3 +88,12 @@
 .navbar:hover + .content {
   margin-left: 230px;
 }
+
+
+
+.post-icon{
+  height: 19px;
+  width: 20px;
+ 
+
+}

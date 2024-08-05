@@ -1,12 +1,14 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
 import "../Design/sidebar.css";
+import { ImHome3 } from "react-icons/im";
+import { HiMiniUsers } from "react-icons/hi2";
+import { FaRegUserCircle } from "react-icons/fa";
+import { MdLocalPostOffice } from "react-icons/md";
 
 export default function SideBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuHovered, setMenuHovered] = useState(false);
-
-
 
   const handleMouseEnter = () => {
     setMenuHovered(true);
@@ -16,14 +18,12 @@ export default function SideBar() {
     setMenuHovered(false);
   };
 
-    
-  
   return (
     <>
       {/* <div className="nav-symbol">☰</div> */}
 
       <div
-        className={`container-sidebar ${menuHovered ? 'change' : ''}`}
+        className={`container-sidebar ${menuHovered ? "change" : ""}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -31,24 +31,27 @@ export default function SideBar() {
         <div className="bar2"></div>
         <div className="bar3"></div>
       </div>
-    
+
       <div className="navbar">
         <a href="/" className="nav-item">
-          Home
+         <ImHome3/> Home
         </a>
 
         <a href="/followers" className="nav-item">
-          Followers
+        
+          <HiMiniUsers/> Followers
         </a>
 
         <a className="nav-item" href="/">
-          Posts
+       
+        <MdLocalPostOffice className="post-icon"/> Posts
+        
         </a>
         {/* <a className="nav-item" href="/">
           Saved
         </a> */}
         <a href="/UserProfile" className="nav-item">
-          Profile
+         <FaRegUserCircle/> Profile
         </a>
       </div>
     </>
