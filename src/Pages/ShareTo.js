@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState, useContext } from "react";
+import { FiSend } from "react-icons/fi";
 
 import NavBar from "./NavBar";
 import "../Design/follower.css";
@@ -54,7 +55,7 @@ export default function ShareTo() {
       <div>
         <div className="col-3-follow">
           <div className="cardfollow">
-            <div className="header-profile-follow">Send Post </div>
+            <div className="header-profile-follow">Send Post   <FiSend/> </div>
 
             {followingData.length == 0 ? (
               <div>No Followers</div>
