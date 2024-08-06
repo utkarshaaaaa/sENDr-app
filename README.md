@@ -9,7 +9,7 @@ https://github.com/utkarshaaaaa/Sendr-App-Backend
 In the project directory, you can run:
 
 ## About
-It is a social media app where you can post your daily thoughts and it gets refreshed every day . Every 24hr the post will get removed .You can follow the person you like to hear everyday . New day new thought.
+It is a social media app where you can post your daily thoughts and it gets refreshed every day . Every 24hr the post will get changed and post only last for 24 hr .You can follow the person you like to hear everyday . New day new thought.
 ## Still on progress :)
 
 ### `npm start`
