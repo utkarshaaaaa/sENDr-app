@@ -50,29 +50,36 @@ export default function () {
         <div className="title">
           <h2>Comments</h2>
         </div>
-
-        {arr?.map((e, id) => {
-          return (
-            <div className="post-comment" key={id}>
-              <div className="post-list">
-                <div className="flex">
-                  <div className="user">
-                    <div className="user-image">
-                      <img src={e.userPic} className="userImg"></img>
+        {arr.length == 0 ? (
+          <div class="no-comments-container">
+            <p class="no-comments-text">No comments</p>
+          </div>
+        ) : (
+          <div>
+            {arr?.map((e, id) => {
+              return (
+                <div className="post-comment" key={id}>
+                  <div className="post-list">
+                    <div className="flex">
+                      <div className="user">
+                        <div className="user-image">
+                          <img src={e.userPic} className="userImg"></img>
+                        </div>
+                        <div className="user-meta">
+                          <div className="name">{e.userName}</div>
+                          <div className="day"></div>
+                        </div>
+                      </div>
+                      <div className="reply"></div>
                     </div>
-                    <div className="user-meta">
-                      <div className="name">{e.userName}</div>
-                      <div className="day"></div>
-                    </div>
-                  </div>
-                  <div className="reply">
+                    <div className="comment">{e.desc}</div>
                   </div>
                 </div>
-                <div className="comment">{e.desc}</div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        )}
+
         <PostComment email={email} postId={individualPostId} userId={userId} />
       </div>
     </>

@@ -149,3 +149,23 @@
   height: 25px;
   width: 30px;
 }
+
+.no-comments-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.no-comments-text {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 20px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
