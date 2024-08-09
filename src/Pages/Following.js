@@ -7,13 +7,30 @@ import "../Design/follower.css";
 import { useEffect, useState } from "react";
 
 export default function Following() {
-  const [arr, setArr] = useState([34, 23, 534, 12, 90,22,67,231,654,289]);
+  const [followingDetails, setfollowingDetails] = useState([]);
+
+  useEffect(() => {
+    const getFollowing = () => {
+   
+
+      axios
+        .get(`http://localhost:3001/getFollowingtest1@gmail.com`) //static data till the login
+        .then((res) => {
+          setfollowingDetails(res.data.data);
+          console.log(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getFollowing();
+  }, []);
 
   const handleRemove = (id) => {
-    const data = arr.filter((e, indx) => {
-      return e !== arr[id];
+    const data = followingDetails.filter((e, indx) => {
+      return e != followingDetails[id];
     });
-    setArr(data);
+    setfollowingDetails(data);
 
     console.log(data);
   };
@@ -25,7 +42,7 @@ export default function Following() {
           <div className="cardfollow">
             <div className="header-profile-follow">Following</div>
 
-            {arr.map((e, id) => {
+            {followingDetails.map((e, id) => {
               return (
                 <div className="top-follow" id={id}>
                   <div className="userDetails">
@@ -33,7 +50,7 @@ export default function Following() {
                       <div className="profile_img">
                         <div className="image-follow">
                           <img
-                            src="https://media.geeksforgeeks.org/wp-content/uploads/20220609093221/g2-200x200.jpg"
+                            src={e.pic}
                             alt="img12"
                             className="imageF"
                           />
@@ -41,7 +58,7 @@ export default function Following() {
                       </div>
                     </div>
                     <h3>
-                      Aditya Verma {e}
+                     {e.userName}
                       <br />
                       <span>Posts 4</span>
                     </h3>

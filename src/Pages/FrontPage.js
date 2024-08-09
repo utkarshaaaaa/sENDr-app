@@ -42,13 +42,7 @@ export default function FrontPage() {
     navigate("/share", { state: { sharedPostData } }); // Navigate to /share
   };
 
-  // useEffect(() => {
-  //   if (sharedPostData) {
-  //     navigate("/share", { state: { sharedPostData } }); // Navigate to /share with state
-  //   }
-  // }, [sharedPostData, navigate]);
-
-  // useEffect(() => {
+  
   //   axios
   //     .post("http://localhost:3001/regtest5@gmail.com",{
   //       name:"test5",

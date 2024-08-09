@@ -78,7 +78,7 @@ export default function ShareTo() {
                         </div>
                         <h3>
                           {e.userName}
-                          {e.email}
+                      
                           <br />
                           <span></span>
                         </h3>
