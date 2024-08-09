@@ -26,7 +26,7 @@ export default function Following() {
     getFollowing();
   }, []);
 
-  const handleRemove = (id) => {
+  const handleUnfollow = (id) => {
     const data = followingDetails.filter((e, indx) => {
       return e != followingDetails[id];
     });
@@ -67,7 +67,7 @@ export default function Following() {
                     <a
                       className="follow-Follow"
                       onClick={() => {
-                        handleRemove(id);
+                        handleUnfollow(id);
                       }}
                     >
                       Unfollow
