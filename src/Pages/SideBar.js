@@ -34,24 +34,21 @@ export default function SideBar() {
 
       <div className="navbar">
         <a href="/" className="nav-item">
-         <ImHome3/> Home
+          <ImHome3 /> Home
         </a>
 
         <a href="/followers" className="nav-item">
-        
-          <HiMiniUsers/> Followers
+          <HiMiniUsers /> Followers
         </a>
 
         <a className="nav-item" href="/">
-       
-        <MdLocalPostOffice className="post-icon"/> Posts
-        
+          <MdLocalPostOffice className="post-icon" /> Posts
         </a>
         {/* <a className="nav-item" href="/">
           Saved
         </a> */}
         <a href="/UserProfile" className="nav-item">
-         <FaRegUserCircle/> Profile
+          <FaRegUserCircle /> Profile
         </a>
       </div>
     </>
