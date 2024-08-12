@@ -11,8 +11,6 @@ export default function Following() {
 
   useEffect(() => {
     const getFollowing = () => {
-   
-
       axios
         .get(`http://localhost:3001/getFollowingtest1@gmail.com`) //static data till the login
         .then((res) => {
@@ -42,40 +40,53 @@ export default function Following() {
           <div className="cardfollow">
             <div className="header-profile-follow">Following</div>
 
-            {followingDetails.map((e, id) => {
-              return (
-                <div className="top-follow" id={id}>
-                  <div className="userDetails">
-                    <div className="profilepic-follow">
-                      <div className="profile_img">
-                        <div className="image-follow">
-                          <img
-                            src={e.pic}
-                            alt="img12"
-                            className="imageF"
-                          />
+            {followingDetails.length == 0 ? (
+              <div>
+                <div class="dot-spinner">
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                  <div class="dot-spinner__dot"></div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                {followingDetails.map((e, id) => {
+                  return (
+                    <div className="top-follow" id={id}>
+                      <div className="userDetails">
+                        <div className="profilepic-follow">
+                          <div className="profile_img">
+                            <div className="image-follow">
+                              <img src={e.pic} alt="img12" className="imageF" />
+                            </div>
+                          </div>
                         </div>
+                        <h3>
+                          {e.userName}
+                          <br />
+                          <span>Posts 4</span>
+                        </h3>
+                      </div>
+                      <div>
+                        <a
+                          className="follow-Follow"
+                          onClick={() => {
+                            handleUnfollow(id);
+                          }}
+                        >
+                          Unfollow
+                        </a>
                       </div>
                     </div>
-                    <h3>
-                     {e.userName}
-                      <br />
-                      <span>Posts 4</span>
-                    </h3>
-                  </div>
-                  <div>
-                    <a
-                      className="follow-Follow"
-                      onClick={() => {
-                        handleUnfollow(id);
-                      }}
-                    >
-                      Unfollow
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>

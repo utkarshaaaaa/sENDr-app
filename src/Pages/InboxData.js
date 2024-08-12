@@ -25,17 +25,28 @@ export default function InboxData() {
         .catch((err) => {
           console.log(err);
         });
-    }, 100);
+    }, 2000);
   }, []);
-  
+
   return (
     <>
-      <NavBar />
+     
       <div class="inbox-container">Inbox Messages</div>
       {postData.length == 0 ? (
         <div class="empty-inbox">
           <h2>Empty Inbox</h2>
           <p>You have no messages at the moment. Check back later!</p>
+
+          <div class="dot-spinner">
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+          </div>
         </div>
       ) : (
         <div>
