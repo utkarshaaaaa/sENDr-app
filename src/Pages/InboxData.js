@@ -58,11 +58,11 @@ export default function InboxData() {
                     <div className="post-header">
                       <br />
                       <img
-                        src={e.senderPic}
+                        src={e.postUserProfileImage}
                         alt="Post User Avatar"
                         className="post-avatar"
                       />
-                      <span className="post-username">XYZ</span>
+                      <span className="post-username">{e.postUserName}</span>
                     </div>
                     <div className="post-content">
                       <p>{e.postDec}</p>

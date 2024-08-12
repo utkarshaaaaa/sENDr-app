@@ -13,6 +13,10 @@ export default function ShareTo() {
     setSharedPostData,
     logedUserEmail,
     setLogedUserEmail,
+    getPostUserName,
+    setPostUserName,
+    getPostImagetUserName,
+    setPostImageUserName,
   } = useContext(Data);
 
   const [followingData, setFollowingData] = useState({});
@@ -33,6 +37,9 @@ export default function ShareTo() {
       .post(`http://localhost:3001/shared${recieverEmail}`, {
         shareData: sharedPostData,
         sendersEmail: logedUserEmail,
+        postUserName:getPostUserName,
+        postUserProfileImage:getPostImagetUserName
+        
       })
       .then((res) => {
         console.log(res.data, "shared data from shared api");

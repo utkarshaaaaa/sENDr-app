@@ -23,6 +23,10 @@ export default function FrontPage() {
     setSharedPostData,
     logedUserEmail,
     setLogedUserEmail,
+    getPostImagetUserName,
+    setPostImageUserName,
+
+    setPostUserName,
   } = useContext(Data);
 
   const navigate = useNavigate();
@@ -36,13 +40,14 @@ export default function FrontPage() {
     navigate("/comments", { state: { Email: Email, postId: postId } });
   }
 
-  const navigateToSharePage = (Email, shareData) => {
+  const navigateToSharePage = (Email, shareData, postData) => {
     setSharedPostData(shareData);
+    setPostUserName(postData.User_name);
+    setPostImageUserName(postData.profile_image);
     setLogedUserEmail("test1@gmail.com"); // Set the shared post data
     navigate("/share", { state: { sharedPostData } }); // Navigate to /share
   };
 
-  
   //   axios
   //     .post("http://localhost:3001/regtest5@gmail.com",{
   //       name:"test5",
@@ -78,11 +83,9 @@ export default function FrontPage() {
         setLikeStatus((prevState) => ({
           ...prevState,
           [postId]: true,
-        }))
+        }));
       })
       .catch((err) => console.log(err));
-
-
 
     setLikesHndle(false);
   };
@@ -96,13 +99,12 @@ export default function FrontPage() {
         setLikeStatus((prevState) => ({
           ...prevState,
           [postId]: false,
-        }))
+        }));
       })
       .catch((err) => console.log(err));
 
     setLikesHndle(!likesHandle);
   };
-
 
   const commen = (postId, data) => {
     const da = data.comment.filter((com) => {
@@ -123,15 +125,13 @@ export default function FrontPage() {
     console.log(fig, "aree te likesss");
   };
 
-  const handleInbox=()=>{
-    setLogedUserEmail("test1@gmail.com")
-    navigate('/inBox')
-
-  }
+  const handleInbox = () => {
+    setLogedUserEmail("test1@gmail.com");
+    navigate("/inBox");
+  };
   return (
     <>
-    <NavBar handleInbox={handleInbox}/>
-    
+      <NavBar handleInbox={handleInbox} />
       {data.map((postData) => {
         return (
           <div key={postData._id}>
@@ -162,7 +162,7 @@ export default function FrontPage() {
                                 <h3>
                                   {postData.User_name}
                                   <br />
-                                  <span>   </span>
+                                  <span> </span>
                                 </h3>
                               </div>
                               <div>
@@ -194,24 +194,21 @@ export default function FrontPage() {
                                             type.postId,
                                             type
                                           );
-                                    
                                     }}
                                   >
                                     <span>
                                       <svg
                                         aria-label="Like"
                                         color="#262626"
-                                        fill={  
+                                        fill={
                                           LikeStatus[type.postId]
                                             ? "#ed0c0c"
                                             : "#262626"
                                         }
-                                        
                                         height="25"
                                         role="img"
                                         viewBox="0 0 48 48"
                                         width="26"
-
                                         onClick={() => {
                                           comLikes(type.postId, postData);
                                         }}
@@ -224,8 +221,7 @@ export default function FrontPage() {
                                         1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 
                                         1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 
                                         1.8
-                                        " 
-                                      
+                                        "
                                         ></path>
                                       </svg>
                                     </span>
@@ -241,7 +237,11 @@ export default function FrontPage() {
                                     viewBox="0 0 48 48"
                                     width="24"
                                     onClick={(e) => {
-                                      navigateToSharePage(postData.email, type);
+                                      navigateToSharePage(
+                                        postData.email,
+                                        type,
+                                        postData
+                                      );
                                     }}
                                   >
                                     <path
@@ -285,7 +285,7 @@ export default function FrontPage() {
                                 ) : (
                                   <p className="likes" id={type.postId}>
                                     {" "}
-                                    {type.likes } likes
+                                    {type.likes} likes
                                   </p>
                                 )}
                               </a>
@@ -328,7 +328,6 @@ export default function FrontPage() {
           </div>
         );
       })}{" "}
-
     </>
   );
 }
