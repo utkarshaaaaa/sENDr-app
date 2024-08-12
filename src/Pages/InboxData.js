@@ -27,9 +27,7 @@ export default function InboxData() {
         });
     }, 100);
   }, []);
-  console.log(logedUserEmail, "email");
-
-  console.log(postData.length, "lengthhhhhhh");
+  
   return (
     <>
       <NavBar />
