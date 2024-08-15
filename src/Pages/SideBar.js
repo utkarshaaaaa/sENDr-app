@@ -7,7 +7,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { MdLocalPostOffice } from "react-icons/md";
 
 export default function SideBar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+ 
   const [menuHovered, setMenuHovered] = useState(false);
 
   const handleMouseEnter = () => {
