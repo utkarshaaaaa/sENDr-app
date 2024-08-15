@@ -35,7 +35,7 @@ export default function () {
         <br />
         {data.name}
         <img src={data.picture} alt="user image" />
-        /* From Uiverse.io by D3OXY */
+        
         <form action="" class="form">
           <p>
             Welcome,<span>sign in to continue</span>
