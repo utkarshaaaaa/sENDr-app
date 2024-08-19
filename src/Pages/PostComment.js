@@ -6,9 +6,9 @@ import { useEffect, useState, useContext } from "react";
 import "../Design/comments.css";
 import { IoSendSharp } from "react-icons/io5";
 
-export default function PostComment({ email, postId,userId }) {
-  const { arr, setArr,logedUserEmail, } = useContext(Data);
-  console.log(email, postId,userId);
+export default function PostComment({ email, postId, userId }) {
+  const { arr, setArr, logedUserEmail } = useContext(Data);
+  console.log(email, postId, userId);
   const [change, setChange] = useState(true);
   const [postComment, setPostComment] = useState("");
   const [newarr, setnewarr] = useState([]);
@@ -16,31 +16,34 @@ export default function PostComment({ email, postId,userId }) {
   const addComment = (event) => {
     event.preventDefault();
 
-    axios
-      .post(`http://localhost:3001/addComment${logedUserEmail}`, {
-        desc: postComment,
-        userId: userId,
-        postId: postId,
-      })
-      .then((res) => {
-        
-        setnewarr([ ...res.data.comment.comment]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (postComment == "") {
+      alert("Type Something to Comment");
+    } else {
+      axios
+        .post(`http://localhost:3001/addComment${logedUserEmail}`, {
+          desc: postComment,
+          userId: userId,
+          postId: postId,
+        })
+        .then((res) => {
+          setnewarr([...res.data.comment.comment]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
-    setChange(!change);
-    setPostComment("");
+      setChange(!change);
+      setPostComment("");
+    }
   };
 
   useEffect(() => {
     if (newarr.length > 0) {
       const newAr = newarr.filter((e) => e.postId === postId).map((e) => e);
-      console.log(newAr, "niceeeeeee");
+
       setArr(newAr);
     } else {
-      console.log("newarr is empty");
+      console.log("empty data");
     }
   }, [newarr, postId, change]);
   const handleComment = (e) => {
@@ -52,7 +55,6 @@ export default function PostComment({ email, postId,userId }) {
     <div>
       <form className="comment-box" onSubmit={addComment}>
         <div className="user">
-          
           <div className="name">{}</div>
         </div>
         <textarea
@@ -68,7 +70,7 @@ export default function PostComment({ email, postId,userId }) {
             addComment(e);
           }}
         >
-           <IoSendSharp className="send-icon"/>
+          <IoSendSharp className="send-icon" />
         </button>
       </form>
     </div>
