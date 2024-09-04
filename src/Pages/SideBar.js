@@ -20,7 +20,7 @@ export default function SideBar() {
 
   return (
     <>
-      {/* <div className="nav-symbol">☰</div> */}
+     
 
       <div
         className={`container-sidebar ${menuHovered ? "change" : ""}`}

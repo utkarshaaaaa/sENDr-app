@@ -15,7 +15,7 @@ export default function Following() {
         .get(`http://localhost:3001/getFollowingtest1@gmail.com`) //static data till the login
         .then((res) => {
           setfollowingDetails(res.data.data);
-          console.log(res.data.data);
+        
         })
         .catch((err) => {
           console.log(err);
@@ -30,7 +30,6 @@ export default function Following() {
     });
     setfollowingDetails(data);
 
-    console.log(data);
   };
 
   return (

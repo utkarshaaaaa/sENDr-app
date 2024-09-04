@@ -14,7 +14,7 @@ export default function Followers() {
     });
     setArr(data);
 
-    console.log(data);
+ 
   };
 
   return (
