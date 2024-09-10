@@ -25,7 +25,7 @@ export default function InboxData() {
         .catch((err) => {
           console.log(err);
         });
-    }, 1000);
+    }, 1250);
   }, []);
 
   return (
