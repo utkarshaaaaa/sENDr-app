@@ -6,6 +6,8 @@ import { Data } from "../context/Context";
 import { useEffect, useState } from "react";
 
 export default function Followers() {
+
+  //test page 
   const [arr, setArr] = useState([34, 23, 534, 12, 90,432,57,321,568,431,5]);
 
   const handleRemove = (id) => {
