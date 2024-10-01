@@ -35,7 +35,7 @@ function App() {
       element: <UserProfile/>
     },{
       path:'/followers',
-      element: <Followers />
+      element: <Followers  userEmail={"test1@gmail.com"}/>
 
     },
     {

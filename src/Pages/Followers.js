@@ -5,18 +5,27 @@ import axios from "axios";
 import { Data } from "../context/Context";
 import { useEffect, useState } from "react";
 
-export default function Followers() {
+export default function Followers(props) {
+  //test page
+  const userEmail = props.userEmail;
+  console.log(userEmail);
 
-  //test page 
-  const [arr, setArr] = useState([34, 23, 534, 12, 90,432,57,321,568,431,5]);
+  const [arr, setArr] = useState([
+    34, 23, 534, 12, 90, 432, 57, 321, 568, 431, 5,
+  ]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/getFollowing${userEmail}`).then((res) => {
+      console.log(res.data);
+      
+    }).catch((err)=>{console.log(err)});
+  }, []);
 
   const handleRemove = (id) => {
     const data = arr.filter((e, indx) => {
       return e !== arr[id];
     });
     setArr(data);
-
- 
   };
 
   return (

@@ -38,21 +38,8 @@ export default function Following() {
         <div className="col-3-follow">
           <div className="cardfollow">
             <div className="header-profile-follow">Following</div>
-
-            {followingDetails.length == 0 ? (
-              <div>
-                <div class="dot-spinner">
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                  <div class="dot-spinner__dot"></div>
-                </div>
-              </div>
-            ) : (
+            
+          
               <div>
                 {followingDetails.map((e, id) => {
                   return (
@@ -85,9 +72,11 @@ export default function Following() {
                   );
                 })}
               </div>
-            )}
+            
           </div>
+          
         </div>
+        
       </div>
     </>
   );
