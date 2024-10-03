@@ -1,7 +1,6 @@
 import "../Design/follower.css";
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Data } from "../context/Context";
 import "../Design/follower.css";
 import { useEffect, useState } from "react";
