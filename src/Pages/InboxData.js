@@ -7,11 +7,11 @@ import "../Design/inBox.css";
 
 export default function InboxData() {
   const { logedUserEmail, setLogedUserEmail } = useContext(Data);
-
+ 
   const [postData, setPostData] = useState([]);
 
   useEffect(() => {
-    setLogedUserEmail("test1@gmail.com"); //static data until login is done
+    setLogedUserEmail("test1@gmail.com"); //Static data until login is done
 
     setTimeout(() => {
       axios
