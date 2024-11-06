@@ -5,6 +5,7 @@ import { ImHome3 } from "react-icons/im";
 import { HiMiniUsers } from "react-icons/hi2";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdLocalPostOffice } from "react-icons/md";
+import { RiUserSearchFill } from "react-icons/ri";
 
 export default function SideBar() {
  
@@ -49,6 +50,9 @@ export default function SideBar() {
         </a> */}
         <a href="/UserProfile" className="nav-item">
           <FaRegUserCircle /> Profile
+        </a>
+        <a href="/explore" className="nav-item">
+        <RiUserSearchFill/> Explore
         </a>
       </div>
     </>
