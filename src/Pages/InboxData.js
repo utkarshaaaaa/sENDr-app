@@ -30,21 +30,21 @@ export default function InboxData() {
   return (
     <>
      
-      <div class="inbox-container">Inbox Messages</div>
+      <div className="inbox-container">Inbox Messages</div>
       {postData.length == 0 ? (
-        <div class="empty-inbox">
+        <div className="empty-inbox">
           <h2>Empty Inbox</h2>
           <p>You have no messages at the moment. Check back later!</p>
 
-          <div class="dot-spinner">
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
+          <div className="dot-spinner">
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
+            <div className="dot-spinner__dot"></div>
           </div>
         </div>
       ) : (

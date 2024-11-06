@@ -1,159 +1,167 @@
 /* styles.css */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fafafa;
-    margin: 0;
-    padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+
+ 
+
+  background-color: #ffffff;
+  background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
+  background-size: 30px 30px;
+  background-position: -5px -5px;
 }
 
 .containerProfile {
-    width: 800px;
-    
-    margin: 90px auto;
-    background-color: #fff;
-    border: 2px solid #dbdbdb;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  width: 800px;
+  margin: 90px auto;
+  border: 2px solid #dbdbdb;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .containerProfile:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .profile-header-profile {
-    text-align: center;
-    border-bottom: 1px solid #dbdbdb;
-    padding-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 20px;
 }
 
 .profile-pic-user {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-bottom: 40px;
-    transition: all 0.3s ease;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 40px;
+  border: 2px solid #635656;
+
+  transition: all 0.3s ease;
 }
 
 .profile-pic-user:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .username {
-    font-size: 28px;
-    
-    margin-bottom: 35px;
-    color: #333;
+  font-size: 28px;
+
+  margin-bottom: 35px;
+  color: #333;
 }
 
 .stats-user {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 .stat-user {
-    text-align: center;
+  text-align: center;
 }
 
 .number {
-    font-weight: bold;
-    font-size: 25px;
-    display: block;
-    color: #333;
+  font-weight: bold;
+  font-size: 25px;
+  display: block;
+  color: #333;
 }
 
 .label {
-    color: #8e8e8e;
-    font-size: 15.3px;
+  color: #8e8e8e;
+  font-size: 15.3px;
 }
 
 .tab-menu {
-    display: flex;
-    justify-content: space-around;
-    margin: 25px 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 25px 0;
 }
 
 .tab-link {
-    background-color: #fff;
-    border: 1px solid #dbdbdb;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
-    width: 175px;
-    transition: all 0.3s ease;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 175px;
+  transition: all 0.3s ease;
 }
 
 .tab-link:hover {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 .tab-link.active {
-    background-color: #fafafa;
-    border-bottom: none;
+  background-color: #fafafa;
+  border-bottom: none;
 }
 
 .tab-content {
-    display: none;
+  display: none;
 }
 
 .tab-content.active {
-    display: block;
+  display: block;
 }
 
 .user {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #dbdbdb;
 }
 
 .user:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .user-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-    transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: all 0.3s ease;
 }
 
 .user-pic:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .user-name {
-    font-size: 16px;
-    flex: 1;
-    color: #333;
+  font-size: 16px;
+  flex: 1;
+  color: #333;
 }
 
 .follow-btn,
 .unfollow-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .follow-btn {
-    background-color: #3897f0;
-    color: #fff;
+  background-color: #3897f0;
+  color: #fff;
 }
 
 .follow-btn:hover {
-    background-color: #287dc1;
+  background-color: #287dc1;
 }
 
 .unfollow-btn {
-    background-color: #efefef;
-    color: #262626;
+  background-color: #efefef;
+  color: #262626;
 }
 
 .unfollow-btn:hover {
-    background-color: #e74242;
+  background-color: #e74242;
 }

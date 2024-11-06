@@ -110,6 +110,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
+    background-image: radial-gradient(#000000 1px, #e5e5f7 1px);
+    background-size: 30px 30px;
+    border-radius: 110px;
+    padding: 20px;
     font-size: 50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
