@@ -30,6 +30,8 @@ export default function Explore() {
       userEmail:userEmail 
     })
     .then((res) => {
+      console.log(res.data.email)
+      console.log(res.data.following)
       
     })
     .catch((err) => {
@@ -37,7 +39,7 @@ export default function Explore() {
     });
 
 
-    // let obj = tempData.find(data => data=== userEmail)
+    let obj = tempData.find(data => data=== userEmail)
     if(res[2] ==userEmail){
       console.log("wow")
     }
