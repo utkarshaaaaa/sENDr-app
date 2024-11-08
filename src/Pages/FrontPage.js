@@ -127,6 +127,7 @@ export default function FrontPage() {
   return (
     <>
       <NavBar handleInbox={handleInbox} />
+      
       {data.map((postData) => {
         return (
           <div key={postData._id}>
