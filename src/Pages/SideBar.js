@@ -8,7 +8,6 @@ import { MdLocalPostOffice } from "react-icons/md";
 import { RiUserSearchFill } from "react-icons/ri";
 
 export default function SideBar() {
- 
   const [menuHovered, setMenuHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -21,8 +20,6 @@ export default function SideBar() {
 
   return (
     <>
-     
-
       <div
         className={`container-sidebar ${menuHovered ? "change" : ""}`}
         onMouseEnter={handleMouseEnter}
@@ -52,7 +49,7 @@ export default function SideBar() {
           <FaRegUserCircle /> Profile
         </a>
         <a href="/explore" className="nav-item">
-        <RiUserSearchFill/> Explore
+          <RiUserSearchFill /> Explore
         </a>
       </div>
     </>

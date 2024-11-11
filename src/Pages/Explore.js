@@ -6,6 +6,8 @@ import "../Design/explore.css";
 
 export default function Explore() {
   const [users, setusers] = useState([]);
+  const [userFollowing, setUserFollowing] = useState([]);
+  const [storedDFollowinng, setStoredFollowing] = useState({});
   useEffect(() => {
     axios
       .get("http://localhost:3001/get_user_data")
@@ -20,29 +22,32 @@ export default function Explore() {
 
   const getFollowingEmail = (e, userEmail, userData) => {
     e.preventDefault();
-    const tempData = [userData];
-    const res = Object.values(userData);
-    console.log(res);
-
-    console.log(typeof res);
     axios
-    .post(`http://localhost:3001/followingtest1@gmail.com`, {//static for now
-      userEmail:userEmail 
-    })
-    .then((res) => {
-      console.log(res.data.email)
-      console.log(res.data.following)
-      
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .get(`http://localhost:3001/user_Followingtest1@gmail.com`) //static data for now
+      .then((res) => {
+        setUserFollowing(res.data.Following);
 
-
-    let obj = tempData.find(data => data=== userEmail)
-    if(res[2] ==userEmail){
-      console.log("wow")
-    }
+        let uf = userFollowing.find(function (val, indx) {
+          return val.email === userEmail;
+        });
+        console.log(uf.email);
+        if (uf.email != userEmail || uf!=undefined) {
+          axios
+            .post(`http://localhost:3001/followingtest1@gmail.com`, {
+              //static for now
+              userEmail: userEmail,
+            })
+            .then((res) => {})
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          alert("U are following !!");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
