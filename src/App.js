@@ -17,10 +17,10 @@ import {
 
 import Menu from "./Pages/Menu";
 import UserProfile from "./Pages/UserProfile";
-import Create_Post from "./Pages/Create_Post";
 import Followers from "./Pages/Followers";
 import Following from "./Pages/Following";
 import SignUp from "./Pages/SignUp";
+import Create_Post from "./Pages/Create_Post";
 
 function App() {
   const route=createBrowserRouter([
@@ -70,6 +70,10 @@ function App() {
     {
       path:'/explore',
       element:<Explore/>
+    },{
+      path:'/createPost',
+      element:<Create_Post/>
+
     }
    
   ])
