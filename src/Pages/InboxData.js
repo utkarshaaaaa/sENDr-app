@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Data } from "../context/Context";
+import GetInboxUserPost from "./GetInboxUserPost";
 import { useEffect, useState, useContext } from "react";
 import "../Design/inBox.css";
 
@@ -51,7 +52,9 @@ export default function InboxData() {
         <div>
           {postData.map((e) => {
             return (
-              <div className="inBox-container">
+              <>
+              <GetInboxUserPost  e={e}/>
+               {/* <div className="inBox-container">
                 <div className="inbox-item">
                   <div className="sender-info">
                     <img
@@ -78,7 +81,9 @@ export default function InboxData() {
                     <div className="post-actions"></div>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              </>
+             
             );
           })}
         </div>
