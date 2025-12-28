@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../Design/inBox.css";
 import { Data } from "../context/Context";
 function GetInboxUserPost(props) {

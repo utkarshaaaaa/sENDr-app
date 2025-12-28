@@ -50,6 +50,7 @@ export default function InboxData() {
         </div>
       ) : (
         <div>
+        
           {postData.map((e) => {
             return (
               <>
