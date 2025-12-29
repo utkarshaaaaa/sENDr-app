@@ -14,7 +14,7 @@ export default function InboxData() {
   useEffect(() => {
     setLogedUserEmail("test1@gmail.com"); //Static data until login is done
 
-    setTimeout(() => {
+    const indx=setTimeout(() => {
       axios
         .get(`http://localhost:3001/getSharedData${logedUserEmail}`)
 
@@ -26,6 +26,7 @@ export default function InboxData() {
           console.log(err);
         });
     }, 1250);
+    return ()=>clearTimeout(indx)
   }, []);
 
   return (
