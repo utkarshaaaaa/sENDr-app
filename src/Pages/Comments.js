@@ -24,22 +24,21 @@ export default function () {
   const [cntxEmail, setCntxEmail] = useState("");
 
   const location = useLocation();
-
+  const asgetComment = async () => {
+    await axios
+      .post(`http://localhost:3001/getComments${email}`, {
+        postId: individualPostId,
+      })
+      .then((res) => {
+        console.log(res.data.comment);
+        setArr(res.data.comment);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     console.log(location.state);
-    const getComment = () => {
-      axios
-        .post(`http://localhost:3001/getComments${email}`, {
-          postId: individualPostId,
-        })
-        .then((res) => {
-          console.log(res.data.comment);
-          setArr(res.data.comment);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
 
     getComment();
   }, []);
