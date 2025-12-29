@@ -10,21 +10,20 @@ export default function InboxData() {
   const { logedUserEmail, setLogedUserEmail } = useContext(Data);
  
   const [postData, setPostData] = useState([]);
-
+  async function fetchData() {
+    try {
+      const response = await axios.get(`http://localhost:3001/getSharedData${logedUserEmail}`);
+      console.log(response.data.postData);
+      setPostData(...response.data.postData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
   useEffect(() => {
     setLogedUserEmail("test1@gmail.com"); //Static data until login is done
 
     const indx=setTimeout(() => {
-      axios
-        .get(`http://localhost:3001/getSharedData${logedUserEmail}`)
-
-        .then((res) => {
-          console.log(res.data.postData);
-          setPostData(...res.data.postData);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      fetchData();
     }, 1250);
     return ()=>clearTimeout(indx)
   }, []);
