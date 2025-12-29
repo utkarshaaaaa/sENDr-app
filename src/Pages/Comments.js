@@ -24,7 +24,7 @@ export default function () {
   const [cntxEmail, setCntxEmail] = useState("");
 
   const location = useLocation();
-  const asgetComment = async () => {
+  const getComment = async () => {
     await axios
       .post(`http://localhost:3001/getComments${email}`, {
         postId: individualPostId,
